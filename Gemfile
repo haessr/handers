@@ -71,3 +71,7 @@ gem "cloudinary", "~> 1.17"
 
 gem "geocoder", "~> 1.6"
 
+gem 'pundit'
+
+
+
