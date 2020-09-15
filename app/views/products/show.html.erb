@@ -1,19 +1,34 @@
-<h1> <%= @product.name %> </h1>
-<p> <%= @product.description %></p>
-
 <div class="container">
-  <%= simple_form_for (@order) do |f| %>
-                <div>
-                  <div><h4><strong>min.price<%=@product.min_price %> €</strong></h4></div>
-                </div>
+  <h1> <%= @product.title %> </h1>
+  <p> <%= @product.description %></p>
+  <p> <%= @product.location %></p>
+  <p> <%= @product.latitude %></p>
+  <p> <%= @product.longitude %></p>
 
-                <%= f.input :price %>
+  <div class="container">
+    <%= simple_form_for (@order) do |f| %>
+                  <div>
+                    <div><h4><strong>min.price <%=@product.min_price %> €</strong></h4></div>
+                  </div>
 
-                <%= f.hidden_field :product_id, value: @product.id %>
-                <div class="d-flex flex-row-reverse">
-                  <%= f.button :submit, "Buy product" %>
+                  <%= f.input :price %>
 
-                </div>
+                  <%= f.hidden_field :product_id, value: @product.id %>
+                  <div class="d-flex flex-row-reverse">
+                    <%= f.button :submit, "Buy product" %>
 
-  <% end %>
+                  </div>
+
+    <% end %>
+  </div>
+
+
+  <div data-controller="map">
+              <div id="map"
+                data-target="map.map"
+                style="width: 100%; min-height: 350px; border-radius: 15px; margin-top: 20px;"
+                data-markers="<%= @markers.to_json %>"
+                data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+              </div>
+  </div>
 </div>
