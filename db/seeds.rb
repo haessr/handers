@@ -5,3 +5,24 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'open-uri'
+require 'faker'
+
+puts "Cleaning database..."
+User.destroy_all
+
+puts "Creating users..."
+
+5.times do |i|
+  user = User.create!(
+    email: Faker::Internet.email,
+
+    password: 'password',
+    password_confirmation: 'password',
+
+  )
+
+  puts 'User created'
+end
+
+puts 'Finished'
