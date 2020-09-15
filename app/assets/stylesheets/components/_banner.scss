@@ -1,0 +1,40 @@
+#banner {
+  background-image: url('https://images.pexels.com/photos/163703/woods-landscape-road-loyalsock-state-forest-163703.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+ height: 50vh;
+ background-size: cover;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+
+/* filter: blur(8px);
+  -webkit-filter: blur(8px);*/
+}
+
+h1 {
+  font-size: 55px;
+}
+
+.banner-info {
+  text-align: center;
+  color: #fff;
+}
+
+h3 {
+  font-size: 1.1em;
+}
+
+
+
+/* btn */
+.secondary-btn {
+  background: #fff;
+  color: #054734;
+  padding: 12px 50px;
+  border: 1px solid #504734;
+  border-radius: 10px;
+}
+
+
+.home-intro i {
+  font-size: 2.4rem;
+}
