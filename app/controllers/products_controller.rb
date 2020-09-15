@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     authorize @product
 
-    @marker = { lat: @product.latitude, lng: @product.longitude }
+    @markers = { lat: @product.latitude, lng: @product.longitude }
   end
 
   def new
@@ -30,8 +30,7 @@ class ProductsController < ApplicationController
   def create
 
     @product = Product.new(product_params)
-    @user = current_user
-    @product.user = @user
+    @product.user = current_user
 
     authorize @product
 
@@ -41,13 +40,16 @@ class ProductsController < ApplicationController
     else
       render :new
     end
+
   end
 
   def edit
+    @product = Product.find(params[:id])
     authorize @product
   end
 
   def update
+    @product = Product.find(params[:id])
     @product.update(product_params)
 
     authorize @product
@@ -69,7 +71,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :description, :location, :category, :price, photos: [])
+    params.require(:product).permit(:title, :description, :location, :category, :min_price, photos: [])
 
   end
 end
