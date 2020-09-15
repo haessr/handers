@@ -5,7 +5,7 @@ class Product < ApplicationRecord
   belongs_to :user
   has_one :order
 
-  validates :description, :name, :category, :min_price, :location, presence: true
+  validates :description, :title, :category, :min_price, :location, presence: true
   validates :username, uniqueness: true
 
   has_many_attached :photos
