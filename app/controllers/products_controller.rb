@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     authorize @product
 
-    @markers = { lat: @product.latitude, lng: @product.longitude }
+    @markers = [ lat: @product.latitude, lng: @product.longitude ]
   end
 
   def new
