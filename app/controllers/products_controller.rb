@@ -9,6 +9,8 @@ class ProductsController < ApplicationController
   def show
     @order = Order.new
     @product = Product.find(params[:id])
+
+    @marker = { lat: @product.latitude, lng: @product.longitude }
   end
 
   def new
@@ -49,7 +51,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :location, :category, :price)
+    params.require(:product).permit(:name, :description, :location, :category, :price, photos: [])
 
   end
 end
