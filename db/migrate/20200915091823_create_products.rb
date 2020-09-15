@@ -8,6 +8,7 @@ class CreateProducts < ActiveRecord::Migration[6.0]
       t.string :location
       t.float :lat
       t.float :long
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end

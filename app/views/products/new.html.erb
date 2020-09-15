@@ -1,0 +1,10 @@
+<div class="container">
+  <%= simple_form_for(@product) do |f| %>
+              <%= f.input :name %>
+              <%= f.input :description %>
+              <%= f.input :category %>
+              <%= f.input :location %>
+              <%= f.input :min_price, input_html: { min: '0' } %>
+              <%= f.submit %>
+              <% end %>
+</div>
