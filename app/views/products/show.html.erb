@@ -1,2 +1,19 @@
 <h1> <%= @product.name %> </h1>
 <p> <%= @product.description %></p>
+
+<div class="container">
+  <%= simple_form_for (@order) do |f| %>
+                <div>
+                  <div><h4><strong>min.price<%=@product.min_price %> €</strong></h4></div>
+                </div>
+
+                <%= f.input :price %>
+
+                <%= f.hidden_field :product_id, value: @product.id %>
+                <div class="d-flex flex-row-reverse">
+                  <%= f.button :submit, "Buy product" %>
+
+                </div>
+
+  <% end %>
+</div>

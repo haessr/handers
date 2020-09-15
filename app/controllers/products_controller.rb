@@ -10,17 +10,21 @@ class ProductsController < ApplicationController
     end
   end
 
-  def new
-    @product = Product.new
-  end
+
 
   def show
+    @order = Order.new
     @product = Product.find(params[:id])
 
     @marker = { lat: @product.latitude, lng: @product.longitude }
   end
 
+  def new
+    @product = Product.new
+  end
+
   def create
+
     @product = Product.new(product_params)
     @user = current_user
     @product.user = @user
@@ -39,6 +43,14 @@ class ProductsController < ApplicationController
   def update
     @product.update(product_params)
     redirect_to product_path(@product)
+  end
+
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+
+    redirect_to products_path
+
   end
 
 
