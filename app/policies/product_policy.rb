@@ -7,6 +7,10 @@ class ProductPolicy < ApplicationPolicy
     true
   end
 
+  def show?
+    true
+  end
+
 
   def edit?
     # record == @restaurant

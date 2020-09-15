@@ -31,14 +31,7 @@ export default class extends Controller {
 
   showMarkers() {
     this.markers.forEach((marker) => {
-      const markerDiv = document.createElement('div');
-      markerDiv.className = 'rounded-circle';
-      markerDiv.style.backgroundImage = `url('${marker.image_url}')`;
-      markerDiv.style.backgroundSize = 'contain';
-      markerDiv.style.width = '25px';
-      markerDiv.style.height = '25px';
-
-      new mapboxgl.Marker(markerDiv)
+      new mapboxgl.Marker()
         .setLngLat([marker.lng, marker.lat])
         .addTo(this.map);
     });
