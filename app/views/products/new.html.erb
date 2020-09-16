@@ -1,13 +1,18 @@
-<div class="container">
-  <div data-controller="location"></div>
-  <%= simple_form_for(@product) do |f| %>
-              <%= f.input :title %>
-              <%= f.input :description %>
-              <%= f.input :category %>
-              <%= f.input :location %>
-              <%= f.input :min_price, input_html: { min: '0' } %>
-              <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-              <%= f.submit %>
-              <% end %>
-</div>
-<%= link_to "back to products", products_path %>
+<div class="container custom-login-container">
+  <div class="justify-content-center">
+    <div class="col-12 col-sm-12 col-md-10 col-lg-8">
+      <div data-controller="location my-2"></div>
+      <h2>New Product</h2>
+      <%= simple_form_for(@product) do |f| %>
+                  <%= f.input :title %>
+                  <%= f.input :description %>
+                  <%= f.input :category %>
+                  <%= f.input :location %>
+                  <%= f.input :min_price, input_html: { min: '0' } %>
+                  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+                  <%= f.submit class: "main-btn"%>
+                  <% end %>
+<%= link_to "Back to products", products_path, class: "btn secondary-btn my-10" %>
+      </div>
+    </div>
+  </div>

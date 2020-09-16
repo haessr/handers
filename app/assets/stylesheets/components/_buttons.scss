@@ -10,10 +10,25 @@ a {
   border-radius: 10px;
 }
 
+.main-btn:hover {
+  background: #fff;
+  color: #054734;
+  padding: 12px 50px;
+  border-radius: 10px;
+}
+
 .secondary-btn {
   background: #fff;
   color: #054734;
   padding: 12px 50px;
   border: 1px solid #504734;
+  border-radius: 10px;
+}
+
+.secondary-btn:hover {
+  background: #054734;
+  color: #fff;
+  padding: 12px 50px;
+  border: 1px solid #fff;
   border-radius: 10px;
 }
