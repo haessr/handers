@@ -1,25 +1,76 @@
-<h2>Sign up</h2>
+<%# <h2>Sign up</h2> %>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+<div class="container custom-login-container">
+  <h2>Register</h2>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-  </div>
+    <div class="form-inputs">
+      <%= f.input :username,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "username" },
+                  placeholder: 'Username',
+                  label: false%>
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" },
+                  placeholder: 'Email',
+                  label: false%>
+      <%= f.input :password,
+                  required: true,
+                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password" },
+                  placeholder: 'Password',
+                  label: false %>
+      <%= f.input :password_confirmation,
+                  required: true,
+                  input_html: { autocomplete: "new-password" },
+                  placeholder: 'Confirm Password',
+                  label: false %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.button :submit, "Sign up", class: 'btn btn-primary custom-form-btn' %>
+    </div>
+  <% end %>
+  <p class="custom-p-login custom-p-small">By clicking the register button, you accept our Terms and conditions of this
+    website.</p>
 
-<%= render "devise/shared/links" %>
+  <p class="custom-p-login">Already have an account? <a href="/users/sign_in">Login here</a></p>
+</div>
+
+<%# <%= render "devise/shared/links" %> 
+
+<!-- Register Form-->
+<%# <div class="container custom-login-container">
+  <h2>Register</h2>
+    <form>
+      <div class="form-group">
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+          placeholder="First Name">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+          placeholder="Last Name">
+      </div>
+      <div class="form-group">
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+          placeholder="Email">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password">
+      </div>
+      <button type="submit" class="btn btn-primary custom-form-btn">Register</button>
+    </form>
+
+  <p class="custom-p-login custom-p-small">By clicking the register button, you accept our Terms and conditions of this
+    website.</p>
+
+  <p class="custom-p-login">Already have an account? <a href="/users/sign_in">Login here</a></p>
+
+</div> %>

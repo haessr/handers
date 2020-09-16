@@ -1,2 +1,39 @@
-<h1> <%= @product.name %> </h1>
-<p> <%= @product.description %></p>
+<div class="container">
+  <h1> <%= @product.title %> </h1>
+  <p> <%= @product.description %></p>
+  <p> <%= @product.location %></p>
+  <p> <%= @product.latitude %></p>
+  <p> <%= @product.longitude %></p>
+
+  <div class="container">
+    <%= simple_form_for (@order) do |f| %>
+                  <div>
+                    <div><h4><strong>min.price <%=@product.min_price %> €</strong></h4></div>
+                  </div>
+
+                  <%= f.input :price %>
+
+                  <%= f.hidden_field :product_id, value: @product.id %>
+                  <div class="d-flex flex-row-reverse">
+                    <%= f.button :submit, "Buy product" %>
+
+                  </div>
+
+    <% end %>
+<%= link_to "Edit product", edit_product_path(@product) %>
+<%= link_to "back to products", products_path %>
+
+  </div>
+
+
+  <div data-controller="map">
+              <div id="map"
+                data-target="map.map"
+                style="width: 100%; min-height: 350px; border-radius: 15px; margin-top: 20px;"
+                data-markers="<%= @markers.to_json %>"
+                data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+              </div>
+  </div>
+</div>
+
+

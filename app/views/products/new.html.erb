@@ -1,10 +1,13 @@
 <div class="container">
+  <div data-controller="location"></div>
   <%= simple_form_for(@product) do |f| %>
-              <%= f.input :name %>
+              <%= f.input :title %>
               <%= f.input :description %>
               <%= f.input :category %>
               <%= f.input :location %>
               <%= f.input :min_price, input_html: { min: '0' } %>
+              <%= f.input :photos, as: :file, input_html: { multiple: true } %>
               <%= f.submit %>
               <% end %>
 </div>
+<%= link_to "back to products", products_path %>

@@ -1,0 +1,11 @@
+<h1>Show order</h1>
+<%= @order.product.title %>
+<br>
+<%= @order.product.description %>
+<br>
+<%= @order.product.user.username%>
+<br>
+<%= @order.price %>
+<br>
+<%= link_to "back to products", products_path %>
+
