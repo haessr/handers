@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get 'products/owned', to: 'products#owned', as: :owned_products
+
   devise_for :users
   resources :products
   resources :orders

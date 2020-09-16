@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
       # @products = Product.all
       @products = policy_scope(Product)
     end
+
   end
 
 
@@ -64,6 +65,13 @@ class ProductsController < ApplicationController
     authorize @product
 
     redirect_to products_path
+
+  end
+
+  def owned
+
+    @owned_products = current_user.owned_products
+    authorize @owned_products
 
   end
 
