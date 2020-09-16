@@ -1,39 +1,55 @@
 <div class="container">
-  <h1> <%= @product.title %> </h1>
-  <p> <%= @product.description %></p>
-  <p> <%= @product.location %></p>
-  <p> <%= @product.latitude %></p>
-  <p> <%= @product.longitude %></p>
-
-  <div class="container">
-    <%= simple_form_for (@order) do |f| %>
-                  <div>
-                    <div><h4><strong>min.price <%=@product.min_price %> €</strong></h4></div>
-                  </div>
-
-                  <%= f.input :price %>
-
-                  <%= f.hidden_field :product_id, value: @product.id %>
-                  <div class="d-flex flex-row-reverse">
-                    <%= f.button :submit, "Buy product" %>
-
-                  </div>
-
-    <% end %>
-<%= link_to "Edit product", edit_product_path(@product) %>
-<%= link_to "back to products", products_path %>
-
-  </div>
-
-
-  <div data-controller="map">
-              <div id="map"
-                data-target="map.map"
-                style="width: 100%; min-height: 350px; border-radius: 15px; margin-top: 20px;"
-                data-markers="<%= @markers.to_json %>"
-                data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-              </div>
-  </div>
+  <div id="carouselExampleIndicators" class="carousel slide mt-2" data-ride="carousel" style='height:200;'>
+    <div class="carousel-inner" style="border-radius: 15px;" >
+      <% @product.photos.each_with_index do |flat, index| %>
+        <div class="carousel-item <%= 'active' if index == 0 %>">
+          <img class="d-block w-100" src="<%= cl_image_path flat.key, aspect_ratio: 1.2, quality: 100, crop: :fill, gravity: :center, class: "d-block" %>" alt="First slide">
+        </div>
+      <% end %>
+    </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+      <h1> <%= @product.min_price %> € +</h1>
+      <h2> <%= @product.title %></h2>
+      <p> <%= @product.description %></p>
+      <br>
+      <h5><i class="fas fa-map-marker-alt fa-lg mr-2"></i><%= @product.location%></h5>
+      <div data-controller="map">
+        <div id="map"
+          data-target="map.map"
+          style="width: 100%; min-height: 350px; border-radius: 15px; margin-top: 20px;"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      </div>
+      <br>
+      <div>
+        <%= @product.user.username %> is donating to
+      </div>
+      <br>
+    <div>
+      <%= simple_form_for (@order) do |f| %>
+        <div><h4>Pick a price starting from <%=@product.min_price %> €</h4></div>
+        <%= f.input :price %>
+        <%= f.hidden_field :product_id, value: @product.id %>
+        <div class="d-flex flex-row-reverse">
+          <%= f.button :submit, "Buy product", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
 </div>
+<nav>
+  <div class="d-flex topnav fixed-bottom" style="margin-bottom: 60px;background-color: #ede6d6;">
+    <button class="btn btn-outline-primary">Chat</button>
+    <button class="btn btn-primary">Buy</button>
+  </div>
+</nav>
 
 
