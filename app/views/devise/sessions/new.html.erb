@@ -18,3 +18,25 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+<!-- Login Form-->
+<div class="container custom-login-container">
+  <h2>Login</h2>
+    <form>
+      <div class="form-group">
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+          placeholder="Email">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-primary custom-form-btn">Login</button>
+    </form>
+
+
+    <p class="custom-p-login">or</p> 
+
+    <button type="submit" class="btn btn-primary custom-btn-reverse">Sign Up</button>
+
+    <a href="" class="custom-forgot-link">Forgot your password?</a>
+</div>
