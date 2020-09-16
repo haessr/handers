@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
 
   def index
     # @orders = Order.all
-    @orders = policy_scope(Reservation).includes(:flat)
+    @orders = policy_scope(Order).includes(:product)
   end
 
   def show

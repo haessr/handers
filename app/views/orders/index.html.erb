@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <% @orders.each do |order| %>
+      <div class="col-12 my-3">
+        <a href="/orders/<%= order.id %>">
+          <div class="card d-flex">
+            <img class="card-img-top" src="<%= cl_image_path order.product.photos.first.key, quality: 100, crop: :fill %>" alt="Card image cap">
+        </a>
+            <div class="card-body">
+              <h3><%= order.product.title %></h3>
+              <p class="text-muted"> Price: <%= order.price %> €</p>
+              <p class="text-muted">Status: <%= order.status.capitalize %></p>
+            </div>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>
