@@ -11,6 +11,10 @@ class ProductPolicy < ApplicationPolicy
     true
   end
 
+  def owned?
+    true
+  end
+
   def edit?
     # record == @restaurant
     # user == current_user

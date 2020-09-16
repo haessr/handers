@@ -1,42 +1,32 @@
-<h2>Log in</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-
-<!-- Login Form-->
 <div class="container custom-login-container">
   <h2>Login</h2>
-    <form>
-      <div class="form-group">
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-          placeholder="Email">
-      </div>
-      <div class="form-group">
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-      </div>
-      <button type="submit" class="btn btn-primary custom-form-btn">Login</button>
-    </form>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :email,
+                  required: false,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" },
+                  placeholder: 'Email',
+                  label: false %>
+      <%= f.input :password,
+                  required: false,
+                  input_html: { autocomplete: "current-password" },
+                  placeholder: 'Password',
+                  label: false %>
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    </div>
 
+    <div class="form-actions">
+      <%= f.button :submit, "Log in", class: 'btn btn-primary custom-form-btn' %>
+    </div>
+  <% end %>
 
     <p class="custom-p-login">or</p> 
 
-    <button type="submit" class="btn btn-primary custom-btn-reverse">Sign Up</button>
-
-    <a href="" class="custom-forgot-link">Forgot your password?</a>
+    <a href="/users/sign_up" class="btn btn-primary custom-btn-reverse">Sign Up</a>
+    <%# <button type="submit" class="btn btn-primary custom-btn-reverse">Sign Up</button> %>
+    <a href="/users/password/new" class="custom-forgot-link">Forgot your password?</a>
 </div>
+
+<%# <%= render "devise/shared/links" %>
