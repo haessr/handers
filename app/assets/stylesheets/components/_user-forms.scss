@@ -27,8 +27,10 @@ a.custom-forgot-link {
   text-align: center;
 }
 
-.custom-login-container input {
-  border: 1px solid #054734;
+.custom-login-container {
+  input[type=text], input[type=number], textarea {
+    border: 1px solid #054734;
+  }
 }
 
 .custom-p-small {

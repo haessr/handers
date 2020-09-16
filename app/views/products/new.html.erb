@@ -2,7 +2,7 @@
   <div class="justify-content-center">
     <div class="col-12 col-sm-12 col-md-10 col-lg-8">
       <div data-controller="location my-2"></div>
-      <h2>New Product</h2>
+      <h2 class="mt-3">New Product</h2>
       <%= simple_form_for(@product) do |f| %>
                   <%= f.input :title %>
                   <%= f.input :description %>
@@ -12,7 +12,7 @@
                   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
                   <%= f.submit class: "main-btn"%>
                   <% end %>
-<%= link_to "Back to products", products_path, class: "btn secondary-btn my-10" %>
+<%= link_to "Back to products", products_path  %>
       </div>
     </div>
   </div>
