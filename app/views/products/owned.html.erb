@@ -1,0 +1,10 @@
+
+<% if @owned_products.empty? %>
+    <h1 class="text-center"style="align-content: center;">You dont own any product 😅</h1>
+<% else %>
+  <div class="container">
+    <% @owned_products.each do |product| %>
+      <%= product.title %>
+    <% end %>
+  </div>
+<% end %>
