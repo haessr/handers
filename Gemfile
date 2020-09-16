@@ -75,3 +75,5 @@ gem 'pundit'
 
 
 
+
+gem "activity_notification", "~> 2.1"
