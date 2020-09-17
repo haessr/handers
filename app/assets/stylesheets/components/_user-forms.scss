@@ -1,18 +1,18 @@
 .custom-form-btn {
   width: 100%;
-  background-color: #054734;
-  border: 1px solid #054734;
+  background-color: #0D4445;
+  border: 1px solid #0D4445;
 }
 
 .custom-btn-reverse {
   width: 100%;
   background-color: #FFF;
-  color: #054734;
-  border: 1px solid #054734;
+  color: #0D4445;
+  border: 1px solid #0D4445;
 }
 
 a.custom-forgot-link {
-  color: #054734;
+  color: #0D4445;
   padding: 5px 0;
   display: block;
 }
@@ -28,7 +28,7 @@ a.custom-forgot-link {
 }
 
 .custom-login-container input {
-  border: 1px solid #054734;
+  border: 1px solid #0D4445;
 }
 
 .custom-p-small {
@@ -71,7 +71,7 @@ a.custom-forgot-link {
   /* pointer-events: none; */
   /* in case of FastClick lib use */
     color: #f1e5e6;
-    background-color: #054734;
+    background-color: #0D4445;
 }
 
 .inputfile+label svg {
@@ -87,18 +87,18 @@ a.custom-forgot-link {
 
 .inputfile__avatar+label {
   color: #f1e5e6;
-  background-color: #054734;
+  background-color: #0D4445;
 }
 
 .inputfile__avatar:focus+label,
 .inputfile__avatar.has-focus+label,
 .inputfile__avatar+label:hover {
-  background-color: #054734;
+  background-color: #0D4445;
 }
 
 .rounded-label {
   border-radius: 5px;
-  background: #054734;
+  background: #0D4445;
   padding: 10px 30px;
   color: #f1e5e6;
   font-size: 1.25rem;
