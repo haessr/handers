@@ -14,7 +14,37 @@ body {
   background-color: white;
   margin: 0;
   padding: 0;
-  margin-top: 65px;
-  margin-bottom: 65px;
+  margin-top: 80px;
+  margin-bottom: 80px;
 }
 
+
+
+
+.price-category {
+  color: #054734;
+}
+
+.btn-buyproduct {
+  background-color: #F38181;
+  color: white;
+}
+.p-description {
+  font-size: 14px;
+  opacity: 0.7;
+  color: #054734;
+}
+
+.pending {
+  background-color: #E8E48A;
+  color: white;
+}
+.cancelled {
+  background-color: #FF728B;
+  color: white;
+}
+
+.completed {
+  background-color: #9ED4A3;
+  color: white;
+}
