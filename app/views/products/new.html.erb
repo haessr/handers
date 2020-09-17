@@ -1,4 +1,5 @@
-<div class="container">
+<div class="container pt-5">
+  <h2>Upload a Product</h2>
   <div data-controller="location"></div>
   <%= simple_form_for(@product) do |f| %>
               <%= f.input :title %>
@@ -7,7 +8,7 @@
               <%= f.input :location %>
               <%= f.input :min_price, input_html: { min: '0' } %>
               <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-              <%= f.submit %>
+              <%= f.button :submit, "Save", class: 'btn main-btn' %>
               <% end %>
 </div>
-<%= link_to "back to products", products_path %>
+<%= link_to "Back to products", products_path, class: "ml-3 pt-2" %>
