@@ -26,12 +26,15 @@ export default class extends Controller {
 
       this.showMarkers()
       this.fitMapToMarkers()
+      this.map.scrollZoom.disable();
     }
   }
 
   showMarkers() {
     this.markers.forEach((marker) => {
-      new mapboxgl.Marker()
+      const custom = document.createElement('div')
+      custom.classList.add('custom-marker')
+      new mapboxgl.Marker(custom)
         .setLngLat([marker.lng, marker.lat])
         .addTo(this.map);
     });

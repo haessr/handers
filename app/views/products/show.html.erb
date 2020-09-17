@@ -1,11 +1,10 @@
 
-<div><a data-confirm="Are you sure?" class="btn btn-sm ml-2" rel="nofollow" data-method="delete" href="/products/<%= @product.id %>">Delete<i class="fas fa-trash-alt ml-2"></i></a></div>
 <div class="container">
   <div id="carouselExampleIndicators" class="carousel slide mt-2" data-ride="carousel" style='height:200;'>
-    <div class="carousel-inner" style="border-radius: 15px;" >
+    <div class="carousel-inner" style="border-radius: 15px; height:350px;" >
       <% @product.photos.each_with_index do |flat, index| %>
         <div class="carousel-item <%= 'active' if index == 0 %>">
-          <img class="d-block w-100" src="<%= cl_image_path flat.key, aspect_ratio: 1.2, quality: 100, crop: :fill, gravity: :center, class: "d-block" %>" alt="First slide">
+          <img class="d-block w-100" src="<%= cl_image_path flat.key, aspect_ratio: 1.1, quality: 100, crop: :fill, gravity: :center, class: "d-block" %>" alt="First slide">
         </div>
       <% end %>
     </div>
@@ -18,12 +17,15 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-      <h1> <%= @product.min_price %> € +</h1>
-      <h2> <%= @product.title %></h2>
-      <p> <%= @product.description %></p>
-      <br>
-      <h5><i class="fas fa-map-marker-alt fa-lg mr-2"></i><%= @product.location%></h5>
-      <div data-controller="map">
+      <div class="container mb-5">
+        <br>
+        <h2> <%= @product.min_price %> €</h2>
+        <h3> <%= @product.title %></h3>
+        <p class="text-muted"> <%= @product.description %></p>
+      </div>
+      <hr/>
+      <div class="container my-4"><h6><i class="fas fa-map-marker-alt fa-lg mr-2" style="color: #F38181;"></i><%= @product.location%></h6></div>
+      <div data-controller="map" style="z-index: 0;">
         <div id="map"
           data-target="map.map"
           style="width: 100%; min-height: 350px; border-radius: 15px; margin-top: 20px;"
@@ -32,27 +34,59 @@
         </div>
       </div>
       <br>
-      <div>
-        <%= @product.user.username %> is donating to
-      </div>
+      <hr/>
       <br>
-    <div>
-      <%= simple_form_for (@order) do |f| %>
-        <div><h4>Pick a price starting from <%=@product.min_price %> €</h4></div>
-        <%= f.input :price %>
-        <%= f.hidden_field :product_id, value: @product.id %>
-        <div class="d-flex flex-row-reverse">
-          <%= f.button :submit, "Buy product", class: "btn btn-primary" %>
+      <div class="mb-4">
+        <%if @product.user.avatar.attachment.nil? %>
+          <%= image_tag 'https://avatars.dicebear.com/api/male/john.svg?mood[]=happy', :width => 40, :height => 40, :crop => :fill, class: 'avatar-menubar'%>
+        <% else %>
+        <%= cl_image_tag(@product.user.avatar.key, :width => 50, :height => 50, :crop => :fill, class: 'avatar-menubar')%>
+        <% end %>
+        <%= @product.user.username %> is donating half of the price to:
+        <br>
+      </div>
+        <div class="d-flex" style="margin-bottom: 10px;">
+          <button class="btn btn-handers-outline flex-grow-1 m-4 <%= "d-none" if current_user == @product.user %>">Send a message</button>
         </div>
-      <% end %>
-    </div>
+      <br>
 </div>
 <nav>
-  <div class="d-flex topnav fixed-bottom" style="margin-bottom: 60px;background-color: #ede6d6;">
-    <button class="btn btn-outline-primary">Chat</button>
-    <button class="btn btn-primary">Buy</button>
+  <div class="fixed-bottom" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.99) 90.76%); margin-bottom: 50px; z-index: 1000;">
+    <div class="container d-flex">
+      <% if current_user == @product.user %>
+        <a class="btn btn-handers flex-grow-1 m-4" href="/products/<%= @product.id %>/edit">Edit this product<i class="fas fa-edit ml-2"></i></a>
+       <% else %>
+        <button class="btn btn-handers flex-grow-1 m-4" data-toggle="modal" data-target="#exampleModal">Buy now</button>
+      <% end %>
+    </div>
   </div>
 </nav>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Make an order</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <%= simple_form_for (@order) do |f| %>
+            <div><h4>Pick a fair price</h4></div>
+          <input class="form-control numeric float optional" placeholder="Minimum <%= @product.min_price %> €" type="number" step="any" name="order[price]" id="order_price">
+          <%= f.hidden_field :product_id, value: @product.id %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%= f.button :submit, "Buy product", class: "btn btn-handers" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

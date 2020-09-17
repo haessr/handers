@@ -13,3 +13,11 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.custom-marker {
+  padding: 90px;
+  border-radius: 50%;
+  background-color: #f381814f;
+  background-blend-mode: screen;
+  border: 3px solid #f38181;
+}
