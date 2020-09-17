@@ -26,6 +26,7 @@
 .button-floter {
   position: absolute;
     bottom: 128px;
+    z-index: 200000;
     width: 100%;
     text-align: center;
 }

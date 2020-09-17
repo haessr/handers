@@ -1,5 +1,5 @@
 
-<div class="container custom-login-container">
+<div class="container custom-login-container mt-5">
   <h2>Login</h2>
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
@@ -22,7 +22,7 @@
     </div>
   <% end %>
 
-    <p class="custom-p-login">or</p> 
+    <p class="custom-p-login">or</p>
 
     <a href="/users/sign_up" class="btn btn-primary custom-btn-reverse">Sign Up</a>
     <%# <button type="submit" class="btn btn-primary custom-btn-reverse">Sign Up</button> %>
