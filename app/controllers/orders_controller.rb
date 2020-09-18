@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
     authorize @order
 
     if @order.save
-      redirect_to order_path(@order)
+      redirect_to orders_path
     else
       redirect_to product_path(@order.product)
     end
