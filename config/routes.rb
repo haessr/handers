@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'products/owned', to: 'products#owned', as: :owned_products
+  get '/products/owned', to: 'products#owned', as: :owned_products
   get '/profile', to: 'pages#profile'
 
   devise_for :users
