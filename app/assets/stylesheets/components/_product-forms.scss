@@ -52,18 +52,18 @@
   /* 4px */
 }
 
-.inputfile-products__avatar+label {
+.inputfile-products__photos+label {
   color: white;
   background-color: #F38181;
 }
 
-.inputfile-products__avatar:focus+label,
-.inputfile-products__avatar.has-focus+label,
-.inputfile-products__avatar+label:hover {
+.inputfile-products__photos:focus+label,
+.inputfile-products__photos.has-focus+label,
+.inputfile-products__photos+label:hover {
   background-color: #F38181;
 }
 
-.rounded-label {
+.rounded-label-product {
   border-radius: 5px;
   background: #F38181;
   padding: 5px 20px;
@@ -72,7 +72,7 @@
   border: 1px solid #F38181;
 }
 
-.rounded-label-reverse {
+.rounded-label-reverse-product {
   border-radius: 5px;
   border: 1px solid #F38181;
   background: white;

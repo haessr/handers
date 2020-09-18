@@ -11,10 +11,9 @@
 
     <%= f.input :avatar, 
                 as: :file, 
-                input_html: {multiple: false},
-                input_html: { class: 'inputfile inputfile__avatar' },
+                input_html: {multiple: false, class: 'inputfile inputfile__avatar' },
                 label: 'Choose an avatar',
-                label_html: {class: 'rounded-label-reverse'}%>
+                label_html: {class: 'rounded-label-reverse-user'}%>
 
     <%= f.input :email, 
                 required: true,

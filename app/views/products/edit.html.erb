@@ -1,12 +1,28 @@
-<h2 class="text-center">Update your house</h2>
-  <div class="col-12 form-group" data-controller="location">
-    <%= simple_form_for(@product) do |f| %>
-        <%= f.input :title %>
-        <%= f.input :description %>
-        <%= f.input :location %>
-        <%= f.input :min_price %>
-        <%#<%= f.input :location, collection: [['Seville', 'Seville'], ['Madrid', 'Madrid'], ['Barcelona', 'Barcelona']], label_method: :second, value_method: :first %>
-        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-        <%= f.button :submit, "Save", class: 'btn btn-primary' %>
-    <% end %>
-<%= link_to "back to products", products_path %>
+<div class="container custom-product-container">
+  <h2 class="text-center">Update your product</h2>
+    <div class="col-12 form-group" data-controller="location">
+      <%= simple_form_for(@product) do |f| %>
+          <%= f.input :title, 
+                      placeholder: 'Title',
+                      label: false %>
+          <%= f.input :description,
+                      placeholder: 'Description',
+                      label: false %>
+          <%= f.input :location, 
+                      placeholder: 'Location',
+                      label: false  %>
+          <%= f.input :min_price,      
+                      input_html: { min: '0' }, 
+                      placeholder: 'Min price',
+                      label: false %>
+          <%#<%= f.input :location, collection: [['Seville', 'Seville'], ['Madrid', 'Madrid'], ['Barcelona', 'Barcelona']], label_method: :second, value_method: :first %>
+          <%= f.input :photos, 
+                      as: :file, 
+                      input_html: {multiple: true,  class: 'inputfile-products inputfile-products__photos'},
+                      label: 'Choose photos',
+                      label_html: {class: 'rounded-label-reverse-product'}%>
+          <%= f.button :submit, "Save", class: 'btn main-btn main-btn-fw'  %>
+      <% end %>
+    </div>
+</div>
+  <%= link_to "back to products", products_path %>
