@@ -1,10 +1,9 @@
 :root {
   font-size: 16px;
-  font-family: 'Open Sans';
   --text-primary: #b6b6b6;
   --text-secondary: #ececec;
-  --bg-primary: #FCF7EC;
-  --bg-secondary: #FCF7EC;
+  --bg-primary: white;
+  --bg-secondary: white;
   --transition-speed: 600ms;
 }
 
@@ -80,19 +79,21 @@ main {
 }
 
 .fa-secondary {
-  color: #FCF7EC;
+  color: white;
 }
 
-.plus-button {
-  background: linear-gradient(202.17deg, #0D4445 8.58%, #021610 91.42%);
-  border-radius: 50px;
+a.plus-button {
+  background: #0D4445;
+  border-radius: 50%;
   height: 40px;
+  width: 40px;
 }
 
 .nav-item-custom>a>i {
-  font-size: 28px;
+  font-size: 32px;
 }
 
-.avatar-menubar {
-  border-radius: 50%;
+li.li-plus {
+display: flex;
+justify-content: space-around;
 }

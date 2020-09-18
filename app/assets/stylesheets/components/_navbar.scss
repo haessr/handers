@@ -16,7 +16,6 @@
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
-  font-family: 'Condiment', cursive;
 }
 
 .topnav a.active {
@@ -33,7 +32,7 @@
   font-size: 16px;
   width: 70vw;
   height: 35px;
-  border: 1px solid #c5c5c5;
+  border: 1px solid rgba(49, 56, 72, 0.15);
   border-radius: 43px;
 }
 
@@ -49,7 +48,7 @@
 }
 
 .topnav .search-container button:hover {
-  background: #FCF7EC;
+  background: white;
 }
 
 .search-form {
