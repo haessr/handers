@@ -1,35 +1,75 @@
-<br>
-<div class="container">
-<h2>My orders</h2>
-  <div class="row">
-    <div>
-      <% @orders.each do |order| %>
-          <div class="col-12 my-4">
-            <%= link_to order_path(order), class: "text-decoration-none color-link-none" do %>
-              <div class="card d-flex" style="border-radius: 15px;">
-                <img class="card-img-top" src="<%= cl_image_path order.product.photos.first.key, height: 600, width: 1000, crop: :fill %>" alt="Card image cap" style="border-top-right-radius: 15px; border-top-left-radius: 15px;">
-                <div class="card-body">
-                  <h4 class="mb-2 price-category"><i class="fas fa-hand-holding-usd fa-sm"></i> <%= order.price %>€</h4>
-                  <h6 class="mb-0 p-title"> <%= order.product.title.capitalize %></h6>
-                  <p class="text-muted mb-0 p-description"> <%= order.product.description.capitalize %></p>
+<div class="container mr-100">
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link handers__pill active" id="pills-selling-tab" data-toggle="pill" href="#pills-selling" role="tab" aria-controls="pills-selling" aria-selected="true">Selling</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link handers__pill" id="pills-buying-tab" data-toggle="pill" href="#pills-buying" role="tab" aria-controls="pills-buying" aria-selected="false">Buying</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-selling" role="tabpanel" aria-labelledby="pills-selling-tab">
+      <% if @seller_orders.length > 0 %>
+        <% @seller_orders.each do |order| %>
+            <div class="col-12 my-4">
+                <div class="card d-flex">
+                  <img class="card-img-top" src="<%= cl_image_path order.product.photos.first.key, height: 600, width: 1000, crop: :fill %>" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="mb-0 price-category"><i class="fas fa-hand-holding-usd"></i> <%= order.price %>€</h4>
+                    <h6 class="mb-0"> <%= order.product.title.capitalize %></h6>
+                    <p class="text-muted mb-0 p-description"> <%= order.product.description.capitalize %></p>
+                  </div>
+
+                  <% if order.status == "pending" %>
+                    <a class="btn px-4 pending" href="/orders/<%= order.id %>" role="button"><%= order.status.capitalize %> </a>
+
+                  <% elsif order.status == "completed" %>
+                    <a class="btn px-4 completed" href="/orders/<%= order.id %>" role="button"><%= order.status.capitalize %> </a>
+
+                  <% else order.status == "cancelled" %>
+                    <a class="btn px-4 cancelled" href="/orders/<%= order.id %>" role="button"><%= order.status.capitalize %> </a>
+
+                  <% end %>
                 </div>
-
-                <% if order.status == "pending" %>
-                  <a class="btn px-4 pending mx-4 mb-3 mt-1" href="/orders/<%= order.id %>" role="button"><%= order.status.capitalize %> </a>
-
-                <% elsif order.status == "completed" %>
-                  <a class="btn px-4 completed mx-4 mb-3 mt-1" href="/orders/<%= order.id %>" role="button"><%= order.status.capitalize %> </a>
-
-                <% else order.status == "cancelled" %>
-                  <a class="btn px-4 cancelled mx-4 mb-3 mt-1" href="/orders/<%= order.id %>" role="button"><%= order.status.capitalize %> </a>
-
-                <% end %>
-
-
-              </div>
-              <% end %>
-          </div>
+            </div>
+        <% end %>
+      <% else %>
+        <div class="container no-products">
+          <p>No orders found</p>
+        </div>
       <% end %>
     </div>
+    
+    <div class="tab-pane fade" id="pills-buying" role="tabpanel" aria-labelledby="pills-buying-tab">
+      <% if @buyer_orders.length > 0 %>
+        <% @buyer_orders.each do |order| %>
+            <div class="col-12 my-4">
+                <div class="card d-flex">
+                  <img class="card-img-top" src="<%= cl_image_path order.product.photos.first.key, height: 600, width: 1000, crop: :fill %>" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="mb-0 price-category"><i class="fas fa-hand-holding-usd"></i> <%= order.price %>€</h4>
+                    <h6 class="mb-0"> <%= order.product.title.capitalize %></h6>
+                    <p class="text-muted mb-0 p-description"> <%= order.product.description.capitalize %></p>
+                  </div>
+
+                  <% if order.status == "pending" %>
+                    <a class="btn px-4 pending" href="/orders/<%= order.id %>" role="button"><%= order.status.capitalize %> </a>
+                  <% elsif order.status == "completed" %>
+                    <a class="btn px-4 completed" href="/orders/<%= order.id %>" role="button"><%= order.status.capitalize %> </a>
+
+                  <% else order.status == "cancelled" %>
+                    <a class="btn px-4 cancelled" href="/orders/<%= order.id %>" role="button"><%= order.status.capitalize %> </a>
+
+                  <% end %>
+                </div>
+            </div>
+        <% end %>
+      <% else %>
+        <div class="container no-products">
+          <p>No orders found</p>
+        </div>
+      <% end %>
+    </div>
+
   </div>
 </div>

@@ -10,6 +10,7 @@
 @import "cards";
 @import "product-forms";
 @import "profile";
+@import "nav__pills";
 
 body {
   color: black;
@@ -23,6 +24,10 @@ body {
 
 .price-category {
   color: #054734;
+}
+
+.mr-100 {
+  margin-top: 100px;
 }
 
 .p-title {
