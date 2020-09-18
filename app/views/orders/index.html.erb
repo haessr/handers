@@ -1,33 +1,33 @@
-
-
+<br>
 <div class="container">
 <h2>My orders</h2>
   <div class="row">
     <div>
       <% @orders.each do |order| %>
           <div class="col-12 my-4">
-
-              <div class="card d-flex">
-                <img class="card-img-top" src="<%= cl_image_path order.product.photos.first.key, quality: 100, crop: :fill %>" alt="Card image cap">
+            <%= link_to order_path(order), class: "text-decoration-none color-link-none" do %>
+              <div class="card d-flex" style="border-radius: 15px;">
+                <img class="card-img-top" src="<%= cl_image_path order.product.photos.first.key, height: 600, width: 1000, crop: :fill %>" alt="Card image cap" style="border-top-right-radius: 15px; border-top-left-radius: 15px;">
                 <div class="card-body">
-                  <h4 class="mb-0 price-category"><i class="fas fa-hand-holding-usd"></i> <%= order.price %>€</h4>
-                  <h6 class="mb-0"> <%= order.product.title.capitalize %></h6>
+                  <h4 class="mb-2 price-category"><i class="fas fa-hand-holding-usd fa-sm"></i> <%= order.price %>€</h4>
+                  <h6 class="mb-0 p-title"> <%= order.product.title.capitalize %></h6>
                   <p class="text-muted mb-0 p-description"> <%= order.product.description.capitalize %></p>
                 </div>
 
                 <% if order.status == "pending" %>
-                  <a class="btn px-4 pending" href="/orders/<%= order.id %>" role="button"><%= order.status.capitalize %> </a>
+                  <a class="btn px-4 pending mx-4 mb-3 mt-1" href="/orders/<%= order.id %>" role="button"><%= order.status.capitalize %> </a>
 
                 <% elsif order.status == "completed" %>
-                  <a class="btn px-4 completed" href="/orders/<%= order.id %>" role="button"><%= order.status.capitalize %> </a>
+                  <a class="btn px-4 completed mx-4 mb-3 mt-1" href="/orders/<%= order.id %>" role="button"><%= order.status.capitalize %> </a>
 
                 <% else order.status == "cancelled" %>
-                  <a class="btn px-4 cancelled" href="/orders/<%= order.id %>" role="button"><%= order.status.capitalize %> </a>
+                  <a class="btn px-4 cancelled mx-4 mb-3 mt-1" href="/orders/<%= order.id %>" role="button"><%= order.status.capitalize %> </a>
 
                 <% end %>
 
 
               </div>
+              <% end %>
           </div>
       <% end %>
     </div>

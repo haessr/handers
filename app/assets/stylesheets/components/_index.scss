@@ -40,17 +40,48 @@ body {
 }
 
 .pending {
-  background-color: #E8E48A;
+  background-color: #fbe184;
   color: white;
+  font-weight: bolder;
 }
+
+.pending:hover {
+  color: white;
+  font-weight: bolder;
+}
+
+.pending:focus {
+  box-shadow: none;
+}
+
 .cancelled {
   background-color: #FF728B;
   color: white;
+  font-weight: bolder;
+}
+
+.cancelled:hover {
+  color: white;
+  font-weight: bolder;
+}
+
+.cancelled:focus {
+  box-shadow: none;
 }
 
 .completed {
   background-color: #9ED4A3;
   color: white;
+  font-weight: bolder;
+}
+
+.completed:hover {
+  color: white;
+  font-weight: bolder;
+}
+
+.completed:focus {
+  box-shadow: none;
 }
 
 .form-control{
