@@ -1,4 +1,5 @@
-<div class="container custom-product-container">
+<div class="container custom-productshow-container">
+<i class="fas fa-arrow-left"></i><%= link_to "Back to products", products_path, class: "ml-3 pt-2" %>
   <h2>Upload a Product</h2>
   <div data-controller="location">
   <%= simple_form_for(@product) do |f| %>
@@ -8,7 +9,7 @@
               <%= f.input :description,
                           placeholder: 'Description',
                           label: false %>
-              <%= f.input :category,
+              <%#= f.input :category,
                           placeholder: 'Category',
                           label: false %>
               <%= f.input :location,
@@ -18,6 +19,7 @@
                           input_html: { min: '0' },
                           placeholder: 'Min price',
                           label: false %>
+              <hr/>
               <%= f.input :npo,
                           label: 'Which NPO will you be donating to?',
                           collection: [['UNICEF', 'UNICEF'], ['WWF', 'WWF' ], ['Cruz Roja', 'Cruz Roja'],
@@ -37,4 +39,3 @@
               <% end %>
   </div>
 </div>
-<%= link_to "Back to products", products_path, class: "ml-3 pt-2" %>

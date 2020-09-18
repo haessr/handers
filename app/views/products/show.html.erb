@@ -1,5 +1,5 @@
-
 <div class="container">
+<i class="fas fa-arrow-left"></i><%= link_to "Back to products", products_path, class: "ml-3 pt-2" %>
   <div id="carouselExampleIndicators" class="carousel slide mt-2" data-ride="carousel" style='height:200;'>
     <div class="carousel-inner" style="border-radius: 15px; height:350px;" >
       <% @product.photos.each_with_index do |flat, index| %>
@@ -68,15 +68,16 @@
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Make an order</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+          <span aria-hidden="true">&times;</span>s
         </button>
       </div>
       <div class="modal-body">
           <%= simple_form_for (@order) do |f| %>
             <div><h4>Pick a fair price</h4></div>
-          <input class="form-control numeric float optional" placeholder="Minimum <%= @product.min_price %> €" type="number" step="any" name="order[price]" id="order_price">
+          <input class="form-control numeric float optional" placeholder="Minimum <%= @product.min_price %> €" type="number" min="<%= @product.min_price %>" step="any" name="order[price]" id="order_price">
+          <%#= f.input :price, as: :float, input_html: { min: 10, value: nil } %>
           <%= f.hidden_field :product_id, value: @product.id %>
-          <br>
+          <hr/>
           <%= f.input :npo,
                           label: 'Which NPO will you be donating to?',
                           collection: [['UNICEF', 'UNICEF'], ['WWF', 'WWF' ], ['Cruz Roja', 'Cruz Roja'],
