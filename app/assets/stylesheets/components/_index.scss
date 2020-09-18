@@ -8,6 +8,7 @@
 @import "bottom-menu";
 @import "user-forms";
 @import "cards";
+@import "product-forms";
 
 body {
   color: black;
@@ -45,4 +46,8 @@ body {
 .completed {
   background-color: #9ED4A3;
   color: white;
+}
+
+.form-control{
+  border: 1px solid rgba(49, 56, 72, 0.15);
 }

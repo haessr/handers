@@ -14,7 +14,7 @@
                 input_html: {multiple: false},
                 input_html: { class: 'inputfile inputfile__avatar' },
                 label: 'Choose an avatar',
-                label_html: {class: 'rounded-label'}%>
+                label_html: {class: 'rounded-label-reverse'}%>
 
     <%= f.input :email, 
                 required: true,
@@ -63,7 +63,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update", class: "btn btn-primary custom-form-btn" %>
+    <%= f.button :submit, "Update", class: "btn btn-primary custom-user-form-btn" %>
   </div>
 <% end %>
 </div>

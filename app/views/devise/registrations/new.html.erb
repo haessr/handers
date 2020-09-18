@@ -1,6 +1,6 @@
 <%# <h2>Sign up</h2> %>
 
-<div class="container custom-login-container mt-5">
+<div class="container custom-login-container">
   <h2>Register</h2>
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
@@ -32,7 +32,7 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Sign up", class: 'btn btn-primary custom-form-btn' %>
+      <%= f.button :submit, "Sign up", class: 'btn btn-primary custom-user-form-btn-reverse' %>
     </div>
   <% end %>
   <p class="custom-p-login custom-p-small">By clicking the register button, you accept our Terms and conditions of this

@@ -1,14 +1,25 @@
-<div class="container pt-5">
+<div class="container custom-product-container">
   <h2>Upload a Product</h2>
   <div data-controller="location"></div>
   <%= simple_form_for(@product) do |f| %>
-              <%= f.input :title %>
-              <%= f.input :description %>
-              <%= f.input :category %>
-              <%= f.input :location %>
-              <%= f.input :min_price, input_html: { min: '0' } %>
+              <%= f.input :title, 
+                          placeholder: 'Title',
+                          label: false %>
+              <%= f.input :description, 
+                          placeholder: 'Description',
+                          label: false %>
+              <%= f.input :category, 
+                          placeholder: 'Category',
+                          label: false %>
+              <%= f.input :location, 
+                          placeholder: 'Location',
+                          label: false %>
+              <%= f.input :min_price,
+                          input_html: { min: '0' }, 
+                          placeholder: 'Min price',
+                          label: false %>
               <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-              <%= f.button :submit, "Save", class: 'btn main-btn' %>
+              <%= f.button :submit, "Save", class: 'btn main-btn main-btn-fw' %>
               <% end %>
 </div>
 <%= link_to "Back to products", products_path, class: "ml-3 pt-2" %>
