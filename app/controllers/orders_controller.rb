@@ -3,6 +3,8 @@ class OrdersController < ApplicationController
   def index
     # @orders = Order.all
     @orders = policy_scope(Order).includes(:product)
+    @buyer_orders = @orders.where(user_id: current_user.id)
+    @seller_orders = @orders.where(products: {user_id: current_user.id})
   end
 
   def show
