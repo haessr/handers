@@ -27,7 +27,7 @@
         </li>
 
         <li class="nav-item-custom">
-          <a href="/users/edit" class="nav-link nav-link-custom">
+          <a href="/profile" class="nav-link nav-link-custom">
           <% if current_user %>
             <%if current_user.avatar.attachment.nil? %>
               <%= image_tag 'https://avatars.dicebear.com/api/male/john.svg?mood[]=happy', :width => 40, :height => 40, :crop => :fill, class: 'avatar-menubar'%>
