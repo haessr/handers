@@ -1,5 +1,9 @@
+<br>
+<div class="container mb-3 text-decoration-none">
+    <%= link_to "← Back", :back %>
+</div>
 <div class="container custom-product-container">
-  <h2 class="text-center">Update your product</h2>
+  <h2 class="text-center mt-3">Update your product</h2>
     <div class="col-12 form-group" data-controller="location">
       <%= simple_form_for(@product) do |f| %>
           <%= f.input :title,
@@ -32,4 +36,3 @@
       <% end %>
     </div>
 </div>
-  <%= link_to "back to products", products_path %>

@@ -1,23 +1,22 @@
-
 <div class="container">
-<h2 class="mr-100">My products</h2>
+  <h2 class="mr-100">My products</h2>
   <div class="row">
     <div>
       <% @owned_products.each do |product| %>
           <div class="col-12 my-4">
-          <!--   <a href="/products/<%= product.id %>"> -->
-              <div class="card d-flex">
-                <img class="card-img-top" src="<%= cl_image_path product.photos.first.key, quality: 100, crop: :fill %>" alt="Card image cap">
+            <%= link_to product_path(product), class: "text-decoration-none color-link-none" do %>
+              <div class="card d-flex" style="border-radius: 15px;">
+                <img class="card-img-top" src="<%= cl_image_path product.photos.first.key, height: 300, width: 500, crop: :fill %>" alt="Card image cap" style="border-top-right-radius: 15px; border-top-left-radius: 15px;">
                 <div class="card-body">
                   <h4 class="mb-0 price-category"><i class="fas fa-gavel"></i> <%= product.min_price %>€</h4>
-                  <h6 class="mb-0"> <%= product.title.capitalize %></h6>
+                  <h5 class="mb-0 mt-2 p-title"> <%= product.title.capitalize %></h5>
                   <p class="text-muted mb-0 p-description"> <%= product.description.capitalize %></p>
                 </div>
-                <a class="btn btn-buyproduct px-4" href="/products/<%= product.id %>" role="button">Hand-it/See product</a>
-                  <!-- <button type="button" >Buy</button> -->
-
-           <!--  </a> -->
+               <!--  <div class="d-flex">
+                  <a class="btn btn-handers-outline flex-grow-1 mx-4 mb-3 mt-1" href="/products/<%= product.id %>" role="button">Hand-it/See product</a>
+                </div> -->
               </div>
+            <% end %>
           </div>
       <% end %>
     </div>
