@@ -42,7 +42,7 @@
         <% else %>
         <%= cl_image_tag(@product.user.avatar.key, :width => 50, :height => 50, :crop => :fill, class: 'avatar-menubar')%>
         <% end %>
-        <%= @product.user.username %> is donating half of the price to:
+        <%= @product.user.username %> is donating half of the price to: <%= @product.npo %>
         <br>
       </div>
         <div class="d-flex" style="margin-bottom: 10px;">
@@ -77,6 +77,13 @@
             <div><h4>Pick a fair price</h4></div>
           <input class="form-control numeric float optional" placeholder="Minimum <%= @product.min_price %> €" type="number" step="any" name="order[price]" id="order_price">
           <%= f.hidden_field :product_id, value: @product.id %>
+          <br>
+          <%= f.input :npo,
+                          label: 'Which NPO will you be donating to?',
+                          collection: [['UNICEF', 'UNICEF'], ['WWF', 'WWF' ], ['Cruz Roja', 'Cruz Roja'],
+                          ['Greenpeace', 'Greenpeace'], ['Save the Children', 'Save the Children'],
+                          ['Help Refugiees', 'Help Refugiees'], ['Coral Reef Restore', 'Coral Reef Restore']],
+                          label_method: :second, value_method: :first %>
         </div>
       </div>
       <div class="modal-footer">
