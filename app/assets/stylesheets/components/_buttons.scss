@@ -41,6 +41,10 @@ a {
   color: white;
 }
 
+.btn-handers-r {
+  float: right;
+}
+
 .btn-handers:focus {
   box-shadow: 0 0 0 0.2rem rgba(243,129,129,.5);
 }
@@ -60,6 +64,14 @@ a {
 
 .btn-handers-outline:hover {
   color: #F38181;
+}
+
+.color-link-none {
+  color: none;
+}
+
+.color-link-none:hover {
+  color: none;
 }
 
 

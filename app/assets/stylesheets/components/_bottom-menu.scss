@@ -32,6 +32,7 @@ main {
   width: 100vw;
   height: 60px;
   z-index: 1010;
+  // box-shadow: 0 0 60px rgba(0, 0, 0, 0.28);
 }
 
 .navbar-nav-custom {
@@ -43,6 +44,7 @@ main {
   align-items: center;
   justify-content: space-around;
   height: 100%;
+  box-shadow: 0 0 32px rgba(0, 0, 0, 0.09);
 }
 
 .nav-item-custom {

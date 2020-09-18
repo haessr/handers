@@ -72,7 +72,6 @@
         </button>
       </div>
       <div class="modal-body">
-        <div>
           <%= simple_form_for (@order) do |f| %>
             <div><h4>Pick a fair price</h4></div>
           <input class="form-control numeric float optional" placeholder="Minimum <%= @product.min_price %> €" type="number" min="<%= @product.min_price %>" step="any" name="order[price]" id="order_price">
@@ -85,13 +84,10 @@
                           ['Greenpeace', 'Greenpeace'], ['Save the Children', 'Save the Children'],
                           ['Help Refugiees', 'Help Refugiees'], ['Coral Reef Restore', 'Coral Reef Restore']],
                           label_method: :second, value_method: :first %>
-        </div>
+       <%= f.button :submit, "Buy product", class: "btn btn-handers btn-handers-r" %>
+             <% end %>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <%= f.button :submit, "Buy product", class: "btn btn-handers" %>
-        <% end %>
-      </div>
+
     </div>
   </div>
 </div>

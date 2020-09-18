@@ -9,19 +9,29 @@
 @import "user-forms";
 @import "cards";
 @import "product-forms";
+@import "profile";
+@import "nav__pills";
 
 body {
   color: black;
   background-color: white;
   margin: 0;
   padding: 0;
-  margin-top: 100px;
+  margin-top: 70px;
   margin-bottom: 65px;
   font-family: 'DM Sans', sans-serif;
 }
 
 .price-category {
   color: #054734;
+}
+
+.mr-100 {
+  margin-top: 100px;
+}
+
+.p-title {
+  color: black;
 }
 
 .btn-buyproduct {
