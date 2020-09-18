@@ -8,7 +8,24 @@ a {
   color: #fff;
   /* padding: 12px 50px; */
   width: 180px;
-  border-radius: 10px;
+  border-radius: 0.25rem;
+}
+
+.main-btn-fw {
+  width: 100%;
+}
+
+.custom-user-form-btn {
+  width: 100%;
+  background-color: #0D4445;
+  border: 1px solid #0D4445;
+}
+
+.custom-user-form-btn-reverse {
+  width: 100%;
+  background-color: white;
+  color: #0D4445;
+  border: 1px solid #0D4445;
 }
 
 .secondary-btn {

@@ -1,25 +1,10 @@
-a.custom-forgot-link {
-  color: #0D4445;
-  padding: 5px 0;
-  display: block;
-}
-
-.custom-p-login {
-  text-align: center;
-  margin: 5px 0;
-}
-
-.custom-login-container h2 {
+.custom-product-container h2 {
   margin: 100px 0 20px 0;
 }
 
-.custom-p-small {
-  font-size: 10px;
-  margin-top: 15px;
-}
 
-// Avatar input
-.inputfile {
+// Photos input
+.inputfile-products {
   width: 0.1px;
   height: 0.1px;
   opacity: 0;
@@ -28,7 +13,7 @@ a.custom-forgot-link {
   z-index: -1;
 }
 
-.inputfile+label {
+.inputfile-products+label {
   max-width: 80%;
   font-size: 1.25rem;
   /* 20px */
@@ -43,20 +28,20 @@ a.custom-forgot-link {
 }
 
 
-.inputfile:focus+label,
-.inputfile.has-focus+label {
+.inputfile-products:focus+label,
+.inputfile-products.has-focus+label {
   outline: 1px dotted #000;
   outline: -webkit-focus-ring-color auto 5px;
 }
 
-.inputfile+label * {
+.inputfile-products+label * {
   /* pointer-events: none; */
   /* in case of FastClick lib use */
-    color: white;
-    background-color: #0D4445;
+  color: white;
+  background-color: #F38181;
 }
 
-.inputfile+label svg {
+.inputfile-products+label svg {
   width: 1em;
   height: 1em;
   vertical-align: middle;
@@ -67,32 +52,31 @@ a.custom-forgot-link {
   /* 4px */
 }
 
-.inputfile__avatar+label {
+.inputfile-products__photos+label {
   color: white;
-  background-color: #0D4445;
+  background-color: #F38181;
 }
 
-.inputfile__avatar:focus+label,
-.inputfile__avatar.has-focus+label,
-.inputfile__avatar+label:hover {
-  background-color: #0D4445;
+.inputfile-products__photos:focus+label,
+.inputfile-products__photos.has-focus+label,
+.inputfile-products__photos+label:hover {
+  background-color: #F38181;
 }
 
-.rounded-label-user {
+.rounded-label-product {
   border-radius: 5px;
-  background: #0D4445;
+  background: #F38181;
   padding: 5px 20px;
   color: white;
   font-size: 1.2rem;
-  border: 1px solid #0D4445;
+  border: 1px solid #F38181;
 }
 
-.rounded-label-reverse-user {
+.rounded-label-reverse-product {
   border-radius: 5px;
-  border: 1px solid #0D4445;
+  border: 1px solid #F38181;
   background: white;
   padding: 5px 20px;
-  color: #0D4445;
+  color: #F38181;
   font-size: 1.2rem;
 }
-
