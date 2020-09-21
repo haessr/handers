@@ -21,7 +21,8 @@
                 placeholder: 'Min price',
                 label: false %>
     <hr/>
-    <%= f.input :npo,
+    <%= f.association :npo %>
+    <%#= f.input :npo,
                 label: 'Which NPO will you be donating to?',
                 collection: [['UNICEF', 'UNICEF'], ['WWF', 'WWF' ], ['Cruz Roja', 'Cruz Roja'],
                 ['Greenpeace', 'Greenpeace'], ['Save the Children', 'Save the Children'],
