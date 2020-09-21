@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
 
-  get '/products/owned', to: 'products#owned', as: :owned_products
   get '/profile', to: 'pages#profile'
+  get '/profile/:id', to: 'pages#profile'
 
   devise_for :users
 
-  resources :products
   resources :orders
   resources :npos
 
-   resources :products do
+  resources :products do
     resources :reviews, only: [:new, :create, :index]
   end
 
