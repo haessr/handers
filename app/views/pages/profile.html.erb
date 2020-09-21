@@ -13,12 +13,12 @@
   <p>@<%= current_user.username %></p>
   </div>
   <div class="profile__actions">
-    <a href="/users/edit" class="btn btn-primary profile__actions-btn">Edit Profile</a>
-    <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'btn btn-primary profile__actions-btn'%>
+    <a href="/users/edit" class="btn profile__actions-btn">Edit Profile</a>
+    <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'btn profile__actions-btn'%>
   </div>
 </div>
 
 <div class="container container-profile-body">
-    <a href="/products/owned" class="btn btn-primary profile__actions-btn-links">My products</a>
-    <a href="/orders" class="btn btn-primary profile__actions-btn-links">My Orders</a>
+    <a href="/products/owned" class="btn profile__actions-btn-links">My products</a>
+    <a href="/orders" class="btn profile__actions-btn-links">My Orders</a>
 </div>

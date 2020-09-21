@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  box-shadow: 0 0 60px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.08);
 }
 
 .topnav a {
@@ -34,6 +34,10 @@
   height: 35px;
   border: 1px solid rgba(49, 56, 72, 0.15);
   border-radius: 43px;
+}
+
+.topnav input {
+  outline: none;
 }
 
 .topnav .search-container button {

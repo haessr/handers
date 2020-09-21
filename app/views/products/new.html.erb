@@ -1,5 +1,6 @@
 <div class="container custom-productshow-container" data-controller="upload">
   <i class="fas fa-arrow-left"></i><%= link_to "Back to products", products_path, class: "ml-3 pt-2" %>
+<br>
   <h2>Upload a Product</h2>
   <div data-controller="location">
   <%= simple_form_for(@product) do |f| %>
