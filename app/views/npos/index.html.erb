@@ -1,0 +1,11 @@
+
+  <div class="mt-5 container">
+      <div class="row">
+        <% @npos.each do |npo| %>
+          <%= cl_image_tag npo.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
+          <h5 >
+            <%= npo.name%>
+          </h5>
+        <% end %>
+      </div>
+  </div>

@@ -4,6 +4,7 @@ class Product < ApplicationRecord
 
   belongs_to :user
   has_one :order
+  has_one :review
 
   validates :description, :title, :npo, :min_price, :location, presence: true
 
