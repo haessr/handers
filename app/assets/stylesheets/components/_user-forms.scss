@@ -18,6 +18,28 @@ a.custom-forgot-link {
   margin-top: 15px;
 }
 
+.thumbnail {
+  position: relative;
+  width: 182px;
+  margin: 40px 0;
+}
+
+.thumbnail .number {
+ color: white;
+  background: #f38181;
+  padding: 7px 14px;
+  border-radius: 50%;
+  right: -16px;
+  position: absolute;
+  top: -10px;
+}
+
+.preview-img{
+  height: 120px;
+  border-radius: 10px;
+}
+
+
 // Avatar input
 .inputfile {
   width: 0.1px;
