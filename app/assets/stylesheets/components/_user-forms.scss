@@ -25,14 +25,17 @@ a.custom-forgot-link {
 }
 
 .thumbnail .number {
- color: white;
-  background: #f38181;
-  padding: 7px 14px;
-  border-radius: 50%;
-  right: -90px;
-  position: absolute;
-  top: -10px;
-  margin-left: 15px;
+color: white;
+background: #f38181;
+width: 30px;
+border-radius: 50%;
+right: -90px;
+position: absolute;
+top: -10px;
+margin-left: 15px;
+height: 30px;
+text-align: center;
+padding-top: 3px;
 }
 
 .preview-img{
