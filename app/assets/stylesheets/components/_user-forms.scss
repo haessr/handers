@@ -24,6 +24,16 @@ a.custom-forgot-link {
   margin: 40px 0;
 }
 
+#new_npo {
+  .preview-img {
+    width: 110px;
+     height: auto
+  }
+  .number {
+    display: none
+  }
+}
+
 .thumbnail .number {
 color: white;
 background: #f38181;
