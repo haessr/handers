@@ -29,14 +29,19 @@ a.custom-forgot-link {
   background: #f38181;
   padding: 7px 14px;
   border-radius: 50%;
-  right: -16px;
+  right: -90px;
   position: absolute;
   top: -10px;
+  margin-left: 15px;
 }
 
 .preview-img{
   height: 120px;
+  width: 170px;
   border-radius: 10px;
+  border: 10px;
+  margin-left: 90px;
+  object-fit: cover;
 }
 
 
