@@ -121,3 +121,10 @@ a
 .product-links a:hover {
     color: #0D4445;
 }
+
+.max-length {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}

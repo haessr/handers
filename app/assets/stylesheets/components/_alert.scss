@@ -1,6 +1,11 @@
 .alert {
   position: fixed;
-  bottom: 16px;
-  right: 16px;
+  bottom: 65px;
+  right: 10px;
+  left: 10px;
   z-index: 1000;
+}
+
+.alert-dismissible {
+  padding-right: 0px;
 }

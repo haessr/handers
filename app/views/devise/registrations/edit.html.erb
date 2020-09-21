@@ -8,14 +8,16 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <div class="d-flex align-items-center">
+      <%= cl_image_tag(current_user.avatar.key, :width => 50, :height => 50, :crop => :fill, class: 'avatar-menubar mb-4 mr-4')%>
 
-    <%= f.input :avatar, 
-                as: :file, 
-                input_html: {multiple: false, class: 'inputfile inputfile__avatar' },
-                label: 'Choose an avatar',
-                label_html: {class: 'rounded-label-reverse-user'}%>
-
-    <%= f.input :email, 
+      <%= f.input :avatar,
+                  as: :file,
+                  input_html: {multiple: false, class: 'inputfile inputfile__avatar' },
+                  label: 'Edit profile picture',
+                  label_html: {class: 'rounded-label-reverse-user btn-sm'}%>
+    </div>
+    <%= f.input :email,
                 required: true,
                 autofocus: true,
                 placeholder: 'Email',
@@ -62,7 +64,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update", class: "btn btn-primary custom-user-form-btn" %>
+    <%= f.button :submit, "Update", class: "btn custom-user-form-btn mt-2" %>
   </div>
 <% end %>
 </div>
