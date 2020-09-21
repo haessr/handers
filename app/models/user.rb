@@ -10,11 +10,13 @@ class User < ApplicationRecord
 
   has_many :bought_products, source: :product, through: :orders
 
+  has_many :reviews, through: :products
+
   validates :username, uniqueness: true
 
   has_one_attached :avatar
-  
+
   acts_as_target
   # User.first.notifications.first.notifiable
-  
+
 end

@@ -1,0 +1,28 @@
+<div class="container">
+  <br>
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-12 col-md-10 col-lg-8">
+      <%= link_to "← Back", :back %>
+
+      <div class="">
+        <h2 class="text-center">Create a review</h2>
+        <div class="col-12 form-group">
+
+          <%= simple_form_for([@product, @review]) do |f| %>
+
+            <div class="form-inputs">
+                <%= f.input :description %>
+                <%= f.input :rating %>
+                <%= f.hidden_field :product_id, value: @review.product_id %>
+            </div>
+            <div class="d-flex justify-content-between">
+              <div class="form-actions w-100">
+                <%= f.button :submit, "Create a review", class: 'btn btn-handers w-100' %>
+              </div>
+            </div>
+          <% end %>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
