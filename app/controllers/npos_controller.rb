@@ -19,7 +19,7 @@ class NposController < ApplicationController
     @npo = Npo.new(npo_params)
     authorize @npo
     if @npo.save
-      redirect_to npo_path(@npo)
+      redirect_to npos_path(anchor: "npo-#{@npo.id}")
     else
       render :new
     end

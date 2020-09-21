@@ -1,11 +1,14 @@
-<div class="container">
+<div class="container" data-controller="upload">
   <br>
   <div class="row justify-content-center">
     <div class="col-12 col-sm-12 col-md-10 col-lg-8">
       <%= link_to "← Back", :back %>
 
       <div class="">
-        <h2 class="text-center">Add an NPO/Charity Cause</h2>
+        <h2 class="text-center py-auto">Register a Non-profit Organisation/Charity Cause</h2>
+        <p class="text-justify">A non-profit organisation is a trust, company or other association of persons that is started to assist the needy or disadvantaged.
+            Being a registered non-profit organisation (NPO) in Handers will improve your chances of getting funding.
+            Only registered non-profit organisations (NPOs) are eligible for collecting donations from Handers users.</p>
         <div class="col-12 form-group">
 
           <%= simple_form_for([@npo]) do |f| %>
@@ -15,19 +18,14 @@
                 <%= f.input :url %>
                 <%= f.input :photo,
                             as: :file,
-                            input_html: {multiple: false, class: 'inputfile-products inputfile-products__photos'},
+                            input_html: {multiple: false, class: 'inputfile-products inputfile-products__photos', data: { action: 'change->upload#previewImage'}},
                             label: 'Choose a logo',
                             label_html: {class: 'rounded-label-reverse-product'} %>
-
-                <%#= f.input :photos,
-                          as: :file,
-                          input_html: {multiple: true,  class: 'inputfile-products inputfile-products__photos'},
-                          label: 'Choose photos',
-                          label_html: {class: 'rounded-label-reverse-product'}%>
+              <div data-target="upload.preview"></div>
             </div>
             <div class="d-flex justify-content-between">
               <div class="form-actions w-100">
-                <%= f.button :submit, "Add", class: 'btn btn-handers w-100' %>
+                <%= f.button :submit, "Register", class: 'btn btn-handers w-100' %>
               </div>
             </div>
           <% end %>
@@ -36,3 +34,4 @@
     </div>
   </div>
 </div>
+
