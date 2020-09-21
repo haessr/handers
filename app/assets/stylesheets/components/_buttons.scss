@@ -19,6 +19,18 @@ a {
   width: 100%;
   background-color: #0D4445;
   border: 1px solid #0D4445;
+  color: white;
+}
+
+.custom-user-form-btn:hover {
+  width: 100%;
+  background-color: #0D4445;
+  border: 1px solid #0D4445;
+  color: white;
+}
+
+.custom-user-form-btn:focus {
+  box-shadow: none;
 }
 
 .custom-user-form-btn-reverse {
@@ -28,12 +40,31 @@ a {
   border: 1px solid #0D4445;
 }
 
+.custom-user-form-btn-reverse:hover {
+  width: 100%;
+  background-color: white;
+  color: #0D4445;
+  border: 1px solid #0D4445;
+}
+
+.custom-user-form-btn-reverse:focus {
+  box-shadow: none;
+}
+
 .secondary-btn {
   background: #fff;
   color: #0D4445;
-  padding: 12px 50px;
+  padding: 10px 20px !important;
   border: 1px solid #504734;
-  border-radius: 10px;
+  border-radius: 5px !important;
+}
+
+.secondary-btn:focus {
+  box-shadow: none;
+}
+
+.secondary-btn:hover {
+  color: #0D4445;
 }
 
 .btn-handers {
