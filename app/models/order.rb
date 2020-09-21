@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   validates :status, inclusion: { in: ["pending", "completed", "cancelled"]}
-  validates :npo, :price, presence: true
-
+  validates :price, presence: true
+  belongs_to :npo
   belongs_to :product
   belongs_to :user
   after_create :notify_seller

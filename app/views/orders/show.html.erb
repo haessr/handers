@@ -32,7 +32,7 @@
         <% else %>
           <div> <%= cl_image_tag(@order.product.user.avatar.key, :width => 50, :height => 50, quality: 100, :crop => :fill, class: 'avatar-menubar')%> </div>
         <% end %>
-        <div class="ml-2"> <strong> <%= @order.product.user.username %> </strong> is donating half of it to: <strong> <%= @order.product.npo %> </strong> </div>
+        <div class="ml-2"> <strong> <%= @order.product.user.username %> </strong> is donating half of it to: <strong> <%= @order.product.npo.name%> </strong> </div>
       </div>
       <div class="col-3 d-flex align-items-center flex-row-reverse">
         <button type="button" class="btn btn-handers mt-2">Contact</button>
@@ -51,11 +51,30 @@
             <div class="d-fex align-content-center">
               <div>
                 <span class="prefix">Order status:</span>
-                <span class="label label-success">Pending</span>
+                <span class="label label-success">@order.status</span>
               </div>
             </div>
             <div>
-              <button type="button" class="btn btn-sm btn-handers-outline">Cancel</button>
+              <% if current_user == @order.product.user %>
+                <% if @order.status != "approved" || "cancelled" %>
+                  <%= simple_form_for(@order) do |f| %>
+                    <%= f.hidden_field :product_id, value: @order.product_id %>
+                    <%= f.hidden_field :status, value: "approved" %>
+                    <%= f.button :submit, "Approve", class: 'btn btn-handers' %>
+                  <% end %>
+
+                  <%= simple_form_for(@order) do |f| %>
+                    <%= f.hidden_field :product_id, value: @order.product_id %>
+                    <%= f.hidden_field :status, value: "cancelled" %>
+                    <%= f.button :submit, "Cancel", class: 'btn btn-handers-outline' %>
+                  <% end %>
+                  <% else %>
+                    <%= @order.status %>
+                <% end %>
+              <% end %>
+
+
+              <!-- <button type="button" class="btn btn-sm btn-handers-outline">Cancel</button> -->
             </div>
           </div>
         </li>
@@ -65,9 +84,9 @@
         </li>
         <li class="list-group-item">
           <span class="prefix">As a "Hander" you are donating half of the total price to: </span>
-          <span class="label label-success"> <strong> <%= @order.npo %> </strong> </span>
+          <span class="label label-success"> <strong> <%= @order.npo.name %> </strong> </span>
         </li>
-        <li class="list-group-item">You can learn more about the cause you are donating at the following link:  <a href=#> <%= @order.npo %> </a></li>
+        <li class="list-group-item">You can learn more about the cause you are donating at the following link:  <a href="http://<%= @order.npo.url %>" target="_blank"> <%= @order.npo.name %> </a></li>
       </ul>
     </div>
     <br>
@@ -79,3 +98,4 @@
     </div>
     <br>
 </div>
+
