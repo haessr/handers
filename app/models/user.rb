@@ -16,5 +16,5 @@ class User < ApplicationRecord
   
   acts_as_target
   # User.first.notifications.first.notifiable
-  
+  has_many :chatrooms
 end
