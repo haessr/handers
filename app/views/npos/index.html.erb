@@ -1,0 +1,18 @@
+
+
+<div class="container">
+  <div class="d-flex">
+    <div class="col-xs-12 col-lg-6" style="padding: 15px 0px;">
+    <% @npos.each do |npo| %>
+      <div class="border my-2" id='<%= "npo-#{npo.id}" %>'>
+          <%= cl_image_tag npo.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top " %>
+          <div class="mx-1 px-2">
+            <h5><%= npo.name%></h5>
+            <p class="card-text"><%= npo.url %></p>
+            <p class="card-text"><%= npo.description %></p>
+          </div>
+        </div>
+          <% end %>
+    </div>>
+  </div>
+</div>

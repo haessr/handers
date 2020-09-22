@@ -20,29 +20,14 @@
         <span class="sr-only">Next</span>
       </a>
   </div>
-      <div class="container mb-5">
+      <div class="container mb-4">
         <br>
-        <div class="d-flex align-items-end">
-        <h2 class="m-0"> <%= @product.min_price %> €</h2><em><span class="text-muted ml-2">Minimum amount</span></em>
+        <h2 class="mt-2 mb-3"> <%= @product.title %></h2>
+        <div class="d-flex align-content-end">
+          <h3 class="mr-2 mb-0"> <%= @product.min_price %> €</h3><em><p class="text-muted m-0">Minimum amount</p></em>
         </div>
-        <h3 class="mt-3"> <%= @product.title %></h3>
-        <p class="text-muted"> <%= @product.description %></p>
+        <p class="text-muted mt-2"> <%= @product.description %></p>
       </div>
-      <hr/>
-      <div class="container my-4 d-flex">
-        <h6><i class="fas fa-map-marker-alt fa-lg mr-2" style="color: #F38181;"></i></h6>
-        <h6><%= @product.location%></h6>
-      </div>
-      <div data-controller="map" style="z-index: 0;">
-        <div id="map"
-          data-target="map.map"
-          style="width: 100%; min-height: 350px; border-radius: 15px; margin-top: 20px;"
-          data-markers="<%= @markers.to_json %>"
-          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-        </div>
-      </div>
-      <br>
-      <hr/>
       <br>
       <div class="text-center mb-5">
         <%if @product.user.avatar.attachment.nil? %>
@@ -50,8 +35,21 @@
         <% else %>
           <%= cl_image_tag(@product.user.avatar.key, :width => 50, :height => 50, :crop => :fill, class: 'avatar-menubar')%>
         <% end %>
-           <strong> <%= @product.user.username %> </strong> will donate half of it to: <strong> <%= @product.npo %> </strong>
+           <strong> <%= @product.user.username %> </strong> will donate half of it to: <strong> <%= @product.npo.name %> </strong>
         <br>
+      </div>
+      <hr/>
+      <div class="container my-4 d-flex">
+        <h6><i class="fas fa-map-marker-alt fa-lg mr-2" style="color: #F38181;"></i></h6>
+        <h6><%= @product.location%></h6>
+      </div>
+      <div class="mb-4" data-controller="map" style="z-index: 0;">
+        <div id="map"
+          data-target="map.map"
+          style="width: 100%; min-height: 350px; border-radius: 15px; margin-top: 20px;"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
       </div>
         <div class="d-flex" style="margin-bottom: 10px;">
           <% if @chatroom_id.nil?%>
@@ -92,7 +90,8 @@
           <%#= f.input :price, as: :float, input_html: { min: 10, value: nil } %>
           <%= f.hidden_field :product_id, value: @product.id %>
           <hr/>
-          <%= f.input :npo,
+          <%= f.association :npo %>
+          <%#= f.input :npo,
                           label: 'Which NPO will you be donating to?',
                           collection: [['UNICEF', 'UNICEF'], ['WWF', 'WWF' ], ['Cruz Roja', 'Cruz Roja'],
                           ['Greenpeace', 'Greenpeace'], ['Save the Children', 'Save the Children'],

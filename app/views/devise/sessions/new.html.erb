@@ -1,6 +1,6 @@
 
 <div class="container custom-login-container">
-  <h2>Login</h2>
+  <h2 class="mb-4">Login</h2>
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
       <%= f.input :email,
@@ -18,15 +18,15 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Log in", class: 'btn btn-primary custom-user-form-btn' %>
+      <%= f.button :submit, "Log in", class: 'btn custom-user-form-btn mt-2' %>
     </div>
   <% end %>
 
     <p class="custom-p-login">or</p>
 
-    <a href="/users/sign_up" class="btn btn-primary custom-user-form-btn-reverse">Sign Up</a>
+    <a href="/users/sign_up" class="btn custom-user-form-btn-reverse">Sign Up</a>
     <%# <button type="submit" class="btn btn-primary custom-btn-reverse">Sign Up</button> %>
-    <a href="/users/password/new" class="custom-forgot-link">Forgot your password?</a>
+    <a href="/users/password/new" class="custom-forgot-link mt-2">Forgot your password?</a>
 </div>
 
 <%# <%= render "devise/shared/links" %>
