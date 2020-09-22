@@ -30,6 +30,8 @@ export default class extends Controller {
           message.classList.add(currentUser === author ? 'right' : 'left');
           messagesContainer.insertAdjacentElement("beforeend", message);
           document.getElementById('message_content').value = '';
+          // console.log(message.getAttribute('id'));
+          self.location.href = '#' + message.getAttribute('id');
         },
       });
     }
