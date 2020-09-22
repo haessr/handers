@@ -10,7 +10,7 @@
   </div>
   <div id="messages" data-chatroom-id="<%= @chatroom.id %>" data-target="chatroom.messages">
     <% @chatroom.messages.each do |message| %>
-      <div class="message <%= message.user == current_user ? "left" : "right" %>" id="message-<%= message.id %>" data-author="<%= message.user_id%>">
+      <div class="message <%= message.user == current_user ? "right" : "left" %>" id="message-<%= message.id %>" data-author="<%= message.user_id%>">
         <div class="message-content"><%= message.content %></div>
       </div>
     <% end %>
