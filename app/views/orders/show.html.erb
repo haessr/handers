@@ -41,9 +41,10 @@
   </div>
   <div>
     <h4>Your order status:
-      <% if @order.status == "completed" || "cancelled" %>
-        (<%= link_to "Leave a review", new_product_review_path(@order.product) %>)
+      <% if @order.status = "pending" %>
+
       <% else %>
+      (<%= link_to "Leave a review", new_product_review_path(@order.product) %>)
       <% end %>
     </h4>
     <ul class="list-group">
