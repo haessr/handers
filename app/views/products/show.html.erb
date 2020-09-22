@@ -1,112 +1,115 @@
 <br>
-<div class="container">
-  <div class="mb-3 text-decoration-none">
-    <%= link_to "← Back", :back %>
-  </div>
-  <div id="carouselExampleIndicators" class="carousel slide mt-2" data-ride="carousel" style='height:200;'>
-    <div class="carousel-inner" style="border-radius: 15px; height:350px;" >
-      <% @product.photos.each_with_index do |flat, index| %>
-      <div class="carousel-item <%= 'active' if index == 0 %>">
-        <img class="d-block w-100" src="<%= cl_image_path flat.key, aspect_ratio: 1.1, quality: 100, crop: :fill, gravity: :center, class: "d-block" %>" alt="First slide">
-      </div>
-      <% end %>
+<div data-controller="product">
+  <div class="container">
+    <div class="mb-3 text-decoration-none">
+      <%= link_to "← Back", :back %>
     </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-  </div>
-      <div class="container mb-4">
-        <br>
-        <h2 class="mt-2 mb-3"> <%= @product.title %></h2>
-        <div class="d-flex align-content-end">
-          <h3 class="mr-2 mb-0"> <%= @product.min_price %> €</h3><em><p class="text-muted m-0">Minimum amount</p></em>
+    <div id="carouselExampleIndicators" class="carousel slide mt-2" data-ride="carousel" style='height:200;'>
+      <div class="carousel-inner" style="border-radius: 15px; height:350px;" >
+        <% @product.photos.each_with_index do |flat, index| %>
+        <div class="carousel-item <%= 'active' if index == 0 %>">
+          <img class="d-block w-100" src="<%= cl_image_path flat.key, aspect_ratio: 1.1, quality: 100, crop: :fill, gravity: :center, class: "d-block" %>" alt="First slide">
         </div>
-        <p class="text-muted mt-2"> <%= @product.description %></p>
-      </div>
-      <br>
-      <div class="text-center mb-5">
-        <%if @product.user.avatar.attachment.nil? %>
-          <%= image_tag 'https://avatars.dicebear.com/api/male/john.svg?mood[]=happy', :width => 40, :height => 40, :crop => :fill, class: 'avatar-menubar'%>
-        <% else %>
-          <%= cl_image_tag(@product.user.avatar.key, :width => 50, :height => 50, :crop => :fill, class: 'avatar-menubar')%>
         <% end %>
-           <strong> <%= @product.user.username %></strong> will donate half of it to:
-           <div class="text-center mb-5">
-              <%= cl_image_tag @product.npo.photo.key, height: 150, width: 150, crop: :fill, class: 'npo-avatar' %>
-              <br>
-              <%= @product.npo.name %>
-           </div>
-
-        <br>
       </div>
-      <hr/>
-      <div class="container my-4 d-flex">
-        <h6><i class="fas fa-map-marker-alt fa-lg mr-2" style="color: #F38181;"></i></h6>
-        <h6><%= @product.location%></h6>
-      </div>
-      <div class="mb-4" data-controller="map" style="z-index: 0;">
-        <div id="map"
-          data-target="map.map"
-          style="width: 100%; min-height: 350px; border-radius: 15px; margin-top: 20px;"
-          data-markers="<%= @markers.to_json %>"
-          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-        </div>
-      </div>
-        <div class="d-flex" style="margin-bottom: 10px;">
-          <% if @chatroom_id.nil?%>
-            <% if current_user != @product.user %>
-              <%= link_to "Create Chatroom", chatrooms_path(:title => @product.title, :product_id => @product.id, :user_id => current_user.id), :method => :post , class: "btn btn-handers-outline flex-grow-1 m-4 " %>
-            <% end %>
-          <% else %>
-            <a href="/chatrooms/<%= @chatroom_id %>" class="btn btn-handers-outline flex-grow-1 m-4 <%= "d-none" if current_user == @product.user %>">Send a message</a>
-          <% end %>
-        </div>
-      <br>
-</div>
-<nav>
-  <div class="fixed-bottom" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.99) 90.76%); margin-bottom: 50px; z-index: 1000;">
-    <div class="container d-flex">
-      <% if current_user == @product.user %>
-        <a class="btn btn-handers flex-grow-1 m-4" href="/products/<%= @product.id %>/edit">Edit this product<i class="fas fa-edit ml-2"></i></a>
-       <% else %>
-        <button class="btn btn-handers flex-grow-1 m-4" data-toggle="modal" data-target="#exampleModal">Buy now</button>
-      <% end %>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
     </div>
+        <div class="container mb-4">
+          <br>
+          <h2 class="mt-2 mb-3"> <%= @product.title %></h2>
+          <div class="d-flex align-content-end">
+            <h3 class="mr-2 mb-0"> <%= @product.min_price %> €</h3><em><p class="text-muted m-0">Minimum amount</p></em>
+          </div>
+          <p class="text-muted mt-2"> <%= @product.description %></p>
+        </div>
+        <br>
+        <div class="text-center mb-5">
+          <%if @product.user.avatar.attachment.nil? %>
+            <%= image_tag 'https://avatars.dicebear.com/api/male/john.svg?mood[]=happy', :width => 40, :height => 40, :crop => :fill, class: 'avatar-menubar'%>
+          <% else %>
+            <%= cl_image_tag(@product.user.avatar.key, :width => 50, :height => 50, :crop => :fill, class: 'avatar-menubar')%>
+          <% end %>
+             <strong> <%= @product.user.username %></strong> will donate half of it to:
+             <div class="text-center mb-5">
+                <%= cl_image_tag @product.npo.photo.key, height: 150, width: 150, crop: :fill, class: 'npo-avatar' %>
+                <br>
+                <%= @product.npo.name %>
+             </div>
+
+          <br>
+        </div>
+        <hr/>
+        <div class="container my-4 d-flex">
+          <h6><i class="fas fa-map-marker-alt fa-lg mr-2" style="color: #F38181;"></i></h6>
+          <h6><%= @product.location%></h6>
+        </div>
+        <div class="mb-4" data-controller="map" style="z-index: 0;">
+          <div id="map"
+            data-target="map.map"
+            style="width: 100%; min-height: 350px; border-radius: 15px; margin-top: 20px;"
+            data-markers="<%= @markers.to_json %>"
+            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+          </div>
+        </div>
+          <div class="d-flex" style="margin-bottom: 10px;">
+            <% if @chatroom_id.nil?%>
+              <% if current_user != @product.user %>
+                <%= link_to "Create Chatroom", chatrooms_path(:title => @product.title, :product_id => @product.id, :user_id => current_user.id), :method => :post , class: "btn btn-handers-outline flex-grow-1 m-4 " %>
+              <% end %>
+            <% else %>
+              <a href="/chatrooms/<%= @chatroom_id %>" class="btn btn-handers-outline flex-grow-1 m-4 <%= "d-none" if current_user == @product.user %>">Send a message</a>
+            <% end %>
+          </div>
+        <br>
   </div>
-</nav>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Make an order</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+  <nav>
+    <div class="fixed-bottom" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.99) 90.76%); margin-bottom: 50px; z-index: 1000;">
+      <div class="container d-flex">
+        <% if current_user == @product.user %>
+          <a class="btn btn-handers flex-grow-1 m-4" href="/products/<%= @product.id %>/edit">Edit this product<i class="fas fa-edit ml-2"></i></a>
+         <% else %>
+          <button class="btn btn-handers flex-grow-1 m-4" data-toggle="modal" data-target="#exampleModal">Buy now</button>
+        <% end %>
       </div>
-      <div class="modal-body">
-          <%= simple_form_for (@order) do |f| %>
-            <div><h4>Pick a fair price</h4></div>
-          <input class="form-control numeric float optional" placeholder="Minimum <%= @product.min_price %> €" type="number" min="<%= @product.min_price %>" step="any" name="order[price]" id="order_price">
-          <%#= f.input :price, as: :float, input_html: { min: 10, value: nil } %>
-          <%= f.hidden_field :product_id, value: @product.id %>
-          <hr/>
-          <%= f.association :npo %>
-          <%#= f.input :npo,
-                          label: 'Which NPO will you be donating to?',
-                          collection: [['UNICEF', 'UNICEF'], ['WWF', 'WWF' ], ['Cruz Roja', 'Cruz Roja'],
-                          ['Greenpeace', 'Greenpeace'], ['Save the Children', 'Save the Children'],
-                          ['Help Refugiees', 'Help Refugiees'], ['Coral Reef Restore', 'Coral Reef Restore']],
-                          label_method: :second, value_method: :first %>
-       <%= f.button :submit, "Buy product", class: "btn btn-handers btn-handers-r" %>
-             <% end %>
-      </div>
+    </div>
+  </nav>
 
+  <div class="modal fade" id="exampleModal" data-target="product.modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Make an order</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <%= simple_form_for (@order) do |f| %>
+              <div><h4>Pick a fair price</h4></div>
+              <%= f.input :price, as: :integer, input_html: { min: @product.min_price } %>
+            <!-- <input class="form-control numeric float optional" placeholder="Minimum <%= @product.min_price %> €" type="number" min="<%= @product.min_price %>" step="any" name="order[price]" id="order_price" required> -->
+            <%#= f.input :price, as: :float, input_html: { min: 10, value: nil } %>
+            <%= f.hidden_field :product_id, value: @product.id %>
+            <hr/>
+            <%= f.association :npo %>
+            <%#= f.input :npo,
+                            label: 'Which NPO will you be donating to?',
+                            collection: [['UNICEF', 'UNICEF'], ['WWF', 'WWF' ], ['Cruz Roja', 'Cruz Roja'],
+                            ['Greenpeace', 'Greenpeace'], ['Save the Children', 'Save the Children'],
+                            ['Help Refugiees', 'Help Refugiees'], ['Coral Reef Restore', 'Coral Reef Restore']],
+                            label_method: :second, value_method: :first %>
+         <%= f.button :submit, "Buy product", class: "btn btn-handers btn-handers-r" %>
+               <% end %>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>

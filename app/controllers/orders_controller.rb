@@ -16,12 +16,14 @@ class OrdersController < ApplicationController
 
     @order = Order.new(order_params)
     @order.user = current_user
+    @product = @order.product
+
     authorize @order
 
     if @order.save
       redirect_to order_path(@order)
     else
-      render new
+      render :template => "products/show"
     end
 
   end

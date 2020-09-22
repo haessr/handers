@@ -40,6 +40,8 @@ class ProductPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
+      # here return products that haven't been purchased
+      # instead of returning .all of them
       scope.all
     end
   end

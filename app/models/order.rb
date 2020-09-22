@@ -4,8 +4,11 @@ class Order < ApplicationRecord
   belongs_to :npo
   belongs_to :product
   belongs_to :user
+
   after_create :notify_seller
 
+  validate :price_should_be_greater_than_product_min_price
+  # before_create :validate_price
 
 
   acts_as_notifiable :users,
@@ -16,6 +19,12 @@ class Order < ApplicationRecord
 
   def order_notifiable_path
     order_path(order)
+  end
+
+  def price_should_be_greater_than_product_min_price
+    if self.price < self.product.min_price
+      errors.add(:price, "should be greater than the min price")
+    end
   end
 
   def notify_seller
