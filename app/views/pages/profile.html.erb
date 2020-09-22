@@ -13,15 +13,20 @@
       <div>
 
       <% rate = [] %>
-        <% if @user.owned_products.present? %>
 
-           <% @user.owned_products.each do |product| %>
+          <% @user.owned_products.each do |product| %>
+            <% if product.review.present? %>
               <% rate << product.review.rating.to_i %>
+            <% else %>
+              <% average = 0 %>
+            <% end %>
            <% end %>
-          <% average = rate.sum / rate.count %>
-        <% else %>
+        <% if rate == nil || 0 %>
           <% average = 0 %>
+        <% else %>
+          <% average = rate.sum / rate.count %>
         <% end %>
+
 
         <div><span> <strong>
           <p class="mb-0">
