@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
   def show
     @order = Order.new
     @product = Product.find(params[:id])
+    @chatroom_id = Chatroom.where(user_id: current_user.id, product_id: params[:id]).first.id
     authorize @product
 
     @markers = [ lat: @product.latitude, lng: @product.longitude ]
