@@ -11,10 +11,45 @@
     <div class="ml-4 profile__info">
       <p class="mb-2">@<%= @user.username %></p>
       <div>
-        User Rating
+
+      <% rate = [] %>
+        <% if @user.owned_products.present? %>
+
+           <% @user.owned_products.each do |product| %>
+              <% rate << product.review.rating.to_i %>
+           <% end %>
+          <% average = rate.sum / rate.count %>
+        <% else %>
+          <% average = 0 %>
+        <% end %>
+
+        <div><span> <strong>
+          <p class="mb-0">
+          <% rev = 5 - average %>
+          <% average.times do  %>
+            <i class="fas fa-heart fa-primary"></i>
+          <% end %>
+          <% rev.times do  %>
+            <i class="far fa-heart fa-primary muted"></i>
+          <% end %>
+          (<%= average %>/5)
+          </p>
+        </strong> </span></div>
+
+
+
+
+
+
+
+
       </div>
       <div>
-        Total donations?
+        <% donated = [] %>
+        <% @user.orders.each do |order| %>
+         <% donated << order.price.to_i  %>
+         <% end %>
+        <p class="btn-handers-outline">Donated: <%= donated.sum / 2 %> €</p>
       </div>
     </div>
   </div>

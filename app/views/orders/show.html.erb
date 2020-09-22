@@ -40,54 +40,57 @@
     </div>
   </div>
   <div>
-    <h4>Your order status:</h4>
-      <ul class="list-group">
-        <li class="list-group-item">
-          <span class="prefix">Order date:</span>
-          <span class="label label-success"> <%= @order.created_at %> </span>
-        </li>
-        <li class="list-group-item">
-          <div class="d-flex justify-content-between">
-            <div class="d-fex align-content-center">
-              <div>
-                <span class="prefix">Order status:</span>
-                <span class="label label-success">@order.status</span>
-              </div>
-            </div>
+    <h4>Your order status:
+      <% if @order.status == "completed" || "cancelled" %>
+        (<%= link_to "Leave a review", new_product_review_path(@order.product) %>)
+      <% else %>
+      <% end %>
+    </h4>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <span class="prefix">Order date:</span>
+        <span class="label label-success"> <%= @order.created_at %> </span>
+      </li>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between">
+          <div class="d-fex align-content-center">
             <div>
-              <% if current_user == @order.product.user %>
-                <% if @order.status != "approved" || "cancelled" %>
-                  <%= simple_form_for(@order) do |f| %>
-                    <%= f.hidden_field :product_id, value: @order.product_id %>
-                    <%= f.hidden_field :status, value: "approved" %>
-                    <%= f.button :submit, "Approve", class: 'btn btn-handers' %>
-                  <% end %>
-
-                  <%= simple_form_for(@order) do |f| %>
-                    <%= f.hidden_field :product_id, value: @order.product_id %>
-                    <%= f.hidden_field :status, value: "cancelled" %>
-                    <%= f.button :submit, "Cancel", class: 'btn btn-handers-outline' %>
-                  <% end %>
-                  <% else %>
-                    <%= @order.status %>
-                <% end %>
-              <% end %>
-
-
-              <!-- <button type="button" class="btn btn-sm btn-handers-outline">Cancel</button> -->
+              <span class="prefix">Order status:</span>
+              <span class="label label-success"> <strong> <u><%= @order.status.capitalize %></u> </strong></span>
             </div>
           </div>
-        </li>
-        <li class="list-group-item">
-          <strong><span class="prefix">Order total:</span>
-          <span class="label label-success"> <%= @order.price %> € </span></strong>
-        </li>
-        <li class="list-group-item">
-          <span class="prefix">As a "Hander" you are donating half of the total price to: </span>
-          <span class="label label-success"> <strong> <%= @order.npo.name %> </strong> </span>
-        </li>
-        <li class="list-group-item">You can learn more about the cause you are donating at the following link:  <a href="http://<%= @order.npo.url %>" target="_blank"> <%= @order.npo.name %> </a></li>
-      </ul>
+          <div>
+            <% if current_user == @order.product.user %>
+              <% if @order.status != "approved" || "cancelled" %>
+                <%= simple_form_for(@order) do |f| %>
+                  <%= f.hidden_field :product_id, value: @order.product_id %>
+                  <%= f.hidden_field :status, value: "approved" %>
+                  <%= f.button :submit, "Approve", class: 'btn btn-handers' %>
+                <% end %>
+
+                <%= simple_form_for(@order) do |f| %>
+                  <%= f.hidden_field :product_id, value: @order.product_id %>
+                  <%= f.hidden_field :status, value: "cancelled" %>
+                  <%= f.button :submit, "Cancel", class: 'btn btn-handers-outline' %>
+                <% end %>
+                <% else %>
+                  <%= @order.status %>
+              <% end %>
+            <% end %>
+            <!-- <button type="button" class="btn btn-sm btn-handers-outline">Cancel</button> -->
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <strong><span class="prefix">Order total:</span>
+        <span class="label label-success"> <%= @order.price %> € </span></strong>
+      </li>
+      <li class="list-group-item">
+        <span class="prefix">As a "Hander" you are donating half of the total price to: </span>
+        <span class="label label-success"> <strong> <%= @order.npo.name %> </strong> </span>
+      </li>
+      <li class="list-group-item">You can learn more about the cause you are donating at the following link:  <a href="http://<%= @order.npo.url %>" target="_blank"> <%= @order.npo.name %> </a></li>
+    </ul>
     </div>
     <br>
     <div class="mb-4 mt-2">
