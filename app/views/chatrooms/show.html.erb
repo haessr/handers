@@ -1,21 +1,23 @@
-<div class="container">
-  <%= link_to "← Back", :back %>
+<div class="container chatroom"  data-controller="chatroom">
   <%#<%= link_to 'Go to product', product_path(@chatroom.product_id)%>
-  <h1>#<%= @chatroom.title %></h1>
-  <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+  <div class="chat-header">
+    <%= link_to :back, class: 'left-arrow' do %>
+      <i class="fas fa-arrow-alt-circle-left"></i>
+    <% end %>
+    <h4>
+      <%= @chatroom.title %>
+    </h4>
+  </div>
+  <div id="messages" data-chatroom-id="<%= @chatroom.id %>" data-target="chatroom.messages">
     <% @chatroom.messages.each do |message| %>
-      <div class="message-container" id="message-<%= message.id %>">
-        <i class="author">
-          <span><%= message.user.username %></span>
-          <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-        </i>
-        <p><%= message.content %></p>
+      <div class="message <%= message.user == current_user ? "right" : "left" %>" id="message-<%= message.id %>" data-author="<%= message.user_id%>">
+        <div class="message-content"><%= message.content %></div>
       </div>
     <% end %>
   </div>
 
   <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-    <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.title}" %>
+    <%= f.input :content, label: false, placeholder: "Message" %>
     <%= f.button :submit, class: 'btn btn-handers' %>
   <% end %>
 </div>
