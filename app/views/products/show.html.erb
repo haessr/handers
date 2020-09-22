@@ -35,7 +35,9 @@
         <% else %>
           <%= cl_image_tag(@product.user.avatar.key, :width => 50, :height => 50, :crop => :fill, class: 'avatar-menubar')%>
         <% end %>
-           <strong> <%= @product.user.username %> </strong> will donate half of it to: <strong> <%= @product.npo.name %> </strong>
+           <strong> <%= @product.user.username %></strong> will donate half of it to:
+           <%= cl_image_tag @product.npo.photo.key, height: 150, width: 150, crop: :fill, class: 'npo-avatar' %>
+
         <br>
       </div>
       <hr/>
@@ -57,7 +59,7 @@
               <%= link_to "Create Chatroom", chatrooms_path(:title => @product.title, :product_id => @product.id, :user_id => current_user.id), :method => :post , class: "btn btn-handers-outline flex-grow-1 m-4 " %>
             <% end %>
           <% else %>
-            <a href="/chatrooms/<%= @chatroom_id %>" class="btn btn-handers-outline flex-grow-1 m-4 <%= "d-none" if current_user == @product.user %>">Send a message</a> 
+            <a href="/chatrooms/<%= @chatroom_id %>" class="btn btn-handers-outline flex-grow-1 m-4 <%= "d-none" if current_user == @product.user %>">Send a message</a>
           <% end %>
         </div>
       <br>
