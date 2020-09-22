@@ -21,9 +21,25 @@ class OrdersController < ApplicationController
     if @order.save
       redirect_to order_path(@order)
     else
-      redirect_to product_path(@order.product)
+      render new
     end
 
+  end
+
+  def edit
+    @order = Order.find(params[:id])
+    authorize @order
+  end
+
+
+  def update
+    @order = Order.find(params[:id])
+
+    authorize @order
+
+    @order.update(order_params)
+
+    redirect_to order_path(@order)
   end
 
   private
