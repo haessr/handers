@@ -1,4 +1,11 @@
 class ChatroomsController < ApplicationController
+
+  def index
+    @chatrooms = policy_scope(Chatroom).all
+    @chatrooms_as_buyer = current_user.chatrooms_as_buyer
+    @chatrooms_as_seller = current_user.chatrooms_as_seller
+  end
+
   def show
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new
