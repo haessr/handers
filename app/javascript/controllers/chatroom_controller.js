@@ -7,7 +7,8 @@ export default class extends Controller {
   static targets = ["messages"]
 
   connect() {
-    this.initChatroomCable()
+    this.initChatroomCable();
+    this.scrollToLastMessage();
   }
 
   initChatroomCable() {
@@ -35,5 +36,11 @@ export default class extends Controller {
         },
       });
     }
+  }
+
+
+  scrollToLastMessage() {
+    const messageDiv = document.getElementById("messages");
+    messageDiv.scrollTop = messageDiv.scrollHeight;
   }
 }
