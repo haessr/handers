@@ -10,7 +10,11 @@
   <div class="form-inputs">
     <div class="d-flex align-items-center">
       <%if current_user.avatar.attachment.nil? %>
+
           <%= image_tag 'https://api.adorable.io/avatars/285/abott@adorable.png', :width => 50, :height => 50, :crop => :fill, class: 'avatar-menubar mb-4 mr-4'%>
+
+          <%= image_tag 'https://api.adorable.io/avatars/285/abott@adorable.png', :width => 40, :height => 40, :crop => :fill, class: 'avatar-menubar avatar-prw'%>
+
         <% else %>
           <%= cl_image_tag(current_user.avatar.key, :width => 50, :height => 50, :crop => :fill, class: 'avatar-menubar mb-4 mr-4')%>
       <% end %>
