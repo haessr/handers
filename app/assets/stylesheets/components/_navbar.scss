@@ -1,3 +1,8 @@
+.topnav h1 {
+  font-family: 'Condiment', cursive;
+  font-size: 30px;
+}
+
 .topnav {
   overflow: hidden;
   background-color: white;
@@ -8,15 +13,15 @@
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.08);
 }
 
-.topnav a {
-  float: left;
-  display: block;
-  color: black;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
+// .topnav a {
+//   float: left;
+//   display: block;
+//   color: black;
+//   text-align: center;
+//   padding: 14px 16px;
+//   text-decoration: none;
+//   font-size: 17px;
+// }
 
 .topnav a.active {
   color: #0D4445;
@@ -27,23 +32,23 @@
   float: right;
 }
 
-.topnav input[type=text] {
+.search-container input[type=text] {
   padding: 0 20px;
   font-size: 16px;
   width: 70vw;
-  height: 35px;
+  height: 38px;
   border: 1px solid rgba(49, 56, 72, 0.15);
   border-radius: 43px;
 }
 
-.topnav input {
+.search-container input {
   outline: none;
 }
 
-.topnav .search-container button {
+.search-container a {
   float: right;
-  padding: 6px 10px;
-  margin-right: 16px;
+  padding: 23px 10px;
+  margin-right: 13px;
   background-color: transparent;
   font-size: 16px;
   border: none;
@@ -51,8 +56,12 @@
   color: #0D4445;
 }
 
-.topnav .search-container button:hover {
-  background: white;
+.search-container a:focus {
+  box-shadow: none;
+}
+
+.search-container a:hover {
+  background: transparent;
 }
 
 .search-form {
