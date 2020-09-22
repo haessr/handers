@@ -52,7 +52,13 @@
         </div>
       </div>
         <div class="d-flex" style="margin-bottom: 10px;">
-          <button class="btn btn-handers-outline flex-grow-1 m-4 <%= "d-none" if current_user == @product.user %>">Send a message</button>
+          <% if @chatroom_id.nil?%>
+            <% if current_user != @product.user %>
+              <%= link_to "Create Chatroom", chatrooms_path(:title => @product.title, :product_id => @product.id, :user_id => current_user.id), :method => :post , class: "btn btn-handers-outline flex-grow-1 m-4 " %>
+            <% end %>
+          <% else %>
+            <a href="/chatrooms/<%= @chatroom_id %>" class="btn btn-handers-outline flex-grow-1 m-4 <%= "d-none" if current_user == @product.user %>">Send a message</a> 
+          <% end %>
         </div>
       <br>
 </div>
@@ -98,6 +104,7 @@
     </div>
   </div>
 </div>
+
 
 
 

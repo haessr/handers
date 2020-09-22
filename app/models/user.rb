@@ -18,5 +18,9 @@ class User < ApplicationRecord
 
   acts_as_target
   # User.first.notifications.first.notifiable
-
+  # has_many :owned_flats, foreign_key: "user_id" , class_name: "Flat"
+  # has_many :booked_flats, source: :flat, through: :reservations
+  # has_many :chatrooms
+  has_many :chatrooms_as_seller, source: :chatrooms , through: :owned_products
+  has_many :chatrooms_as_buyer, foreign_key: "user_id" , class_name: "Chatroom"
 end

@@ -11,4 +11,5 @@ class Product < ApplicationRecord
   validates :description, :title, :min_price, :location, presence: true
 
   has_many_attached :photos
+  has_many :chatrooms
 end
