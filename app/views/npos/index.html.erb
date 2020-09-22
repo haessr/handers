@@ -2,13 +2,13 @@
 
 <div class="container">
   <div class="d-flex">
-    <div class="col-xs-12 col-lg-6" style="padding: 15px 0px;">
+    <div class="col-xs-12 col-lg-6" style="padding: 15px 0px">
     <% @npos.each do |npo| %>
-      <div class="border my-2" id='<%= "npo-#{npo.id}" %>'>
+      <div class="border rounded my-4" id='<%= "npo-#{npo.id}" %>'>
           <%= cl_image_tag npo.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top " %>
-          <div class="mx-1 px-2">
-            <h5><%= npo.name%></h5>
-            <p class="card-text"><%= npo.url %></p>
+          <div class="m-3 px-3">
+            <h5><strong><%= npo.name%></strong></h5>
+            <%= link_to 'Visit their site', npo.url, target:"_blank" %>
             <p class="card-text"><%= npo.description %></p>
           </div>
         </div>
