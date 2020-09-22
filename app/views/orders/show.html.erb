@@ -41,9 +41,9 @@
   </div>
   <div>
     <h4>Your order status:
-      <% if @order.status == "completed" || "cancelled" %>
-        (<%= link_to "Leave a review", new_product_review_path(@order.product) %>)
+      <% if @order.status != "pending" %>
       <% else %>
+      (<%= link_to "Leave a review", new_product_review_path(@order.product) %>)
       <% end %>
     </h4>
     <ul class="list-group">
@@ -61,20 +61,18 @@
           </div>
           <div>
             <% if current_user == @order.product.user %>
-              <% if @order.status != "approved" || "cancelled" %>
+              <% if @order.status == "pending" %>
                 <%= simple_form_for(@order) do |f| %>
-                  <%= f.hidden_field :product_id, value: @order.product_id %>
-                  <%= f.hidden_field :status, value: "approved" %>
+                  <%= f.input :status, as: :hidden, input_html: {value: "completed"} %>
                   <%= f.button :submit, "Approve", class: 'btn btn-handers' %>
                 <% end %>
 
                 <%= simple_form_for(@order) do |f| %>
-                  <%= f.hidden_field :product_id, value: @order.product_id %>
-                  <%= f.hidden_field :status, value: "cancelled" %>
+                  <%= f.input :status, as: :hidden, input_html: {value: "cancelled"} %>
                   <%= f.button :submit, "Cancel", class: 'btn btn-handers-outline' %>
                 <% end %>
                 <% else %>
-                  <%= @order.status %>
+                   <p class="fa-primary"> <%= @order.status.capitalize %> </p>
               <% end %>
             <% end %>
             <!-- <button type="button" class="btn btn-sm btn-handers-outline">Cancel</button> -->
