@@ -11,23 +11,15 @@
     <div class="ml-4 profile__info">
       <p class="mb-2">@<%= @user.username %></p>
       <div>
-
-      <% rate = [] %>
-
-          <% @user.owned_products.each do |product| %>
-            <% if product.review.present? %>
-              <% rate << product.review.rating.to_i %>
-            <% else %>
-              <% average = 0 %>
-            <% end %>
-           <% end %>
-        <% if rate == nil || 0 %>
-          <% average = 0 %>
-        <% else %>
-          <% average = rate.sum / rate.count %>
+        <% rate = [] %>
+        <% @user.owned_products.each do |product| %>
+          <% if product.review.present? %>
+            <% rate << product.review.rating.to_i %>
+          <% else %>
+            <% average = 0 %>
+          <% end %>
         <% end %>
-
-
+        <% average = rate.sum / rate.count %>
         <div><span> <strong>
           <p class="mb-0">
           <% rev = 5 - average %>
@@ -40,21 +32,15 @@
           (<%= average %>/5)
           </p>
         </strong> </span></div>
+    </div>
+    <div>
+      <% donated = [] %>
 
+      <% @user.owned_products.each do |product| %>
+        <% donated << product.order.price.to_i  %>
 
-
-
-
-
-
-
-      </div>
-      <div>
-        <% donated = [] %>
-        <% @user.orders.each do |order| %>
-         <% donated << order.price.to_i  %>
-         <% end %>
-        <p class="btn-handers-outline">Donated: <%= donated.sum / 2 %> €</p>
+      <% end %>
+      <p class="btn-handers-outline">Donated: <%= (donated.sum.to_d / 2) %> €</p>
       </div>
     </div>
   </div>
