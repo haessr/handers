@@ -4,6 +4,7 @@ class Order < ApplicationRecord
   belongs_to :npo
   belongs_to :product
   belongs_to :user
+  monetize :price_cents
 
   after_create :notify_seller
 

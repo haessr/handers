@@ -5,7 +5,10 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :orders
+  resources :orders, only: [:index, :show, :create, :edit, :update] do
+    resources :payments, only: :new
+  end
+
   resources :npos
 
   resources :products do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_21_133627) do
+ActiveRecord::Schema.define(version: 2020_09_23_090411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,12 +89,13 @@ ActiveRecord::Schema.define(version: 2020_09_21_133627) do
 
   create_table "orders", force: :cascade do |t|
     t.string "status", default: "pending", null: false
-    t.float "price"
     t.bigint "product_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "npo_id"
+    t.string "checkout_session_id"
+    t.integer "price_cents", default: 0, null: false
     t.index ["npo_id"], name: "index_orders_on_npo_id"
     t.index ["product_id"], name: "index_orders_on_product_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
@@ -104,7 +105,6 @@ ActiveRecord::Schema.define(version: 2020_09_21_133627) do
     t.string "title"
     t.text "description"
     t.string "category"
-    t.integer "min_price"
     t.string "location"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 2020_09_21_133627) do
     t.float "latitude"
     t.float "longitude"
     t.bigint "npo_id"
+    t.integer "min_price_cents", default: 0, null: false
     t.index ["npo_id"], name: "index_products_on_npo_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
