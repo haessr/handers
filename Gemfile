@@ -66,14 +66,14 @@ gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'faker'
 
-
 gem "cloudinary", "~> 1.17"
 
 gem "geocoder", "~> 1.6"
 
 gem 'pundit'
 
-
-
-
 gem "activity_notification", "~> 2.1"
+
+gem 'money-rails'
+
+gem 'stripe'

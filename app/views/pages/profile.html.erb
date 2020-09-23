@@ -19,7 +19,7 @@
             <% average = 0 %>
           <% end %>
         <% end %>
-        <% average = rate.sum / rate.count %>
+        <% average = rate.count == 0 ? 0 : rate.sum / rate.count %>
         <div><span> <strong>
           <p class="mb-0">
           <% rev = 5 - average %>

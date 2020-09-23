@@ -8,8 +8,9 @@ class Product < ApplicationRecord
   belongs_to :npo
 
 
-  validates :description, :title, :min_price, :location, presence: true
+  validates :description, :title, :min_price_cents, :location, presence: true
 
   has_many_attached :photos
   has_many :chatrooms
+  monetize :min_price_cents
 end
