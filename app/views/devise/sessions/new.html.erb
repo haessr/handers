@@ -15,9 +15,7 @@
                   placeholder: 'Password',
                   label: false %>
       <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-    </div>
 
-    <div class="form-actions">
       <%= f.button :submit, "Log in", class: 'btn custom-user-form-btn mt-2' %>
     </div>
   <% end %>
