@@ -3,7 +3,7 @@ class Product < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_location?
 
   belongs_to :user
-  has_one :order
+  has_many :orders
   has_one :review
   belongs_to :npo
 
