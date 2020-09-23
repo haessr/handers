@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
 
@@ -18,10 +19,12 @@ class ProductsController < ApplicationController
   def show
     @order = Order.new
     @product = Product.find(params[:id])
-    if Chatroom.where(user_id: current_user.id, product_id: params[:id]).first.nil?
-      @chatroom_id = nil
-    else
-      @chatroom_id = Chatroom.where(user_id: current_user.id, product_id: params[:id]).first.id
+    if current_user
+      if Chatroom.where(user_id: current_user.id, product_id: params[:id]).first.nil?
+        @chatroom_id = nil
+      else
+        @chatroom_id = Chatroom.where(user_id: current_user.id, product_id: params[:id]).first.id
+      end
     end
     authorize @product
 

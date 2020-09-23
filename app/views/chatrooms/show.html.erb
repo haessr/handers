@@ -1,23 +1,33 @@
 <div class="container chatroom"  data-controller="chatroom">
-  <%#<%= link_to 'Go to product', product_path(@chatroom.product_id)%>
   <div class="chat-header">
-    <%= link_to :back, class: 'left-arrow' do %>
-      <i class="fas fa-arrow-alt-circle-left"></i>
+    <%= link_to chatrooms_path, class: 'left-arrow' do %>
+      <i class="fas fa-arrow-alt-circle-left mr-3"></i>
     <% end %>
-    <h4>
-      <%= @chatroom.title %>
-    </h4>
+    <h3 class="m-0">
+      <%= link_to product_path(@chatroom.product_id) do %>
+        <%= @chatroom.title %>
+      <% end %>
+    </h3>
   </div>
   <div class="messages" id="messages" data-chatroom-id="<%= @chatroom.id %>" data-target="chatroom.messages">
     <% @chatroom.messages.each do |message| %>
-      <div class="message <%= message.user == current_user ? "right" : "left" %>" id="message-<%= message.id %>" data-author="<%= message.user_id%>">
-        <div class="message-content"><%= message.content %></div>
+      <div class="message <%= message.user == current_user ? "right" : "left" %>" id="message-<%= message.id %>" data-author="<%= message.user_id%>" >
+        <div class="message-content">
+          <%= message.content %>
+        </div>
       </div>
     <% end %>
   </div>
 
   <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-    <%= f.input :content, label: false, placeholder: "Message" %>
-    <%= f.button :submit, class: 'btn btn-handers' %>
+    <div class="d-flex mt-2">
+      <div class="col-8 p-0">
+        <%= f.input :content, label: false, placeholder: "Message", class: 'w-100' %>
+      </div>
+      <div class="col-4 pr-0">
+        <%= f.button :submit, "Send", class: 'btn btn-handers w-100' %>
+      </div>
+    </div>
   <% end %>
 </div>
+

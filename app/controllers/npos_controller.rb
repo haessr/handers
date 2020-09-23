@@ -1,12 +1,8 @@
 class NposController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
    @npos  = policy_scope(Npo.all)
-
-  end
-  def new
-    @npo = Npo.new
-    authorize @npo
   end
 
   def show
@@ -14,6 +10,10 @@ class NposController < ApplicationController
     authorize @npo
   end
 
+  def new
+    @npo = Npo.new
+    authorize @npo
+  end
 
   def create
     @npo = Npo.new(npo_params)
