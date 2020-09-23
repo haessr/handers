@@ -48,13 +48,10 @@
 
       <br>
     </div>
-    <h4>Your order status:
-      <% if @user == @order.user %>
-        <% if @order.status == "completed" %>
-        (<%= link_to "Leave a review", new_product_review_path(@order.product) %>)
-        <% else %>
-        <% end %>
-      <% else %>
+    <h4>
+      Your order status:
+      <% if current_user == @order.user && @order.status == "completed"%>
+        (<%= link_to "Leave a review", new_product_review_path(@order.product)%>)
       <% end %>
     </h4>
     <ul class="list-group">
