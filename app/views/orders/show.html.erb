@@ -30,11 +30,22 @@
   </div>
   <div>
     <div class="mb-4 mt-2">
+
       <h4>Shipping status</h4>
-      <div class="progress mt-3">
-        <div class="progress-bar" role="progressbar" style="width: 25%; background-color: #F38181" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">Request sent</div>
+      <% if @order.status == "pending" %>
+        <div class="progress mt-3">
+          <div class="progress-bar" role="progressbar" style="width: 25%; background-color: #ADC4F8" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">Request sent</div>
         </div>
-      </div>
+      <% elsif @order.status == "completed" %>
+        <div class="progress mt-3">
+          <div class="progress-bar" role="progressbar" style="width: 80%; background-color: #9ED4A3" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">The product is on it´s way </div>
+        </div>
+      <% else %>
+        <div class="progress mt-3">
+          <div class="progress-bar" role="progressbar" style="width: 100%; background-color: #F38181" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">The product was cancelled, no shipping available </div>
+        </div>
+      <% end %>
+
       <br>
     </div>
     <h4>Your order status:
