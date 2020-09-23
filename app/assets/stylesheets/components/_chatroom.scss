@@ -16,6 +16,7 @@
   border: 1px solid #ececec;
   border-top: none;
   border-radius: 0px 0px 5px 5px;
+  min-height: calc(100vh - 150px - 45px - 61px - 30px);
   max-height: calc(100vh - 150px - 45px - 61px - 30px);
   overflow: scroll;
 }

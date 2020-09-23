@@ -1,41 +1,41 @@
 
-<div class="container mr-100">
-  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-    <li class="nav-item">
-      <a class="nav-link handers__pill active" id="pills-selling-tab" data-toggle="pill" href="#pills-selling" role="tab" aria-controls="pills-selling" aria-selected="true">As seller</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link handers__pill" id="pills-buying-tab" data-toggle="pill" href="#pills-buying" role="tab" aria-controls="pills-buying" aria-selected="false">As Buyer</a>
-    </li>
-  </ul>
-  <div class="tab-content" id="pills-tabContent">
-    <div class="tab-pane fade show active" id="pills-selling" role="tabpanel" aria-labelledby="pills-selling-tab">
-      <% if @chatrooms_as_seller.length > 0 %>
-        <div class="list-group">
-          <% @chatrooms_as_seller.each do |chatroom| %>
-            <%= link_to chatroom.title, chatroom_path(chatroom), class: 'list-group-item list-group-item-action'%>
-          <% end %>
-        </div>
-      <% else %>
-        <div class="container no-products">
-          <p>No chats found</p>
-        </div>
+<div class="container">
+  <br>
+  <h2>My messages</h2>
+  <% if @chatrooms.length > 0 %>
+    <div class="list-group">
+      <% @chatrooms.each do |chatroom| %>
+          <%= link_to chatroom_path(chatroom), class: 'text-decoration-none color-link-none' do %>
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <div class="card" style="border-radius: 15px; border: none;">
+                        <div class="card-horizontal align-items-center">
+                            <div class="img-square-wrapper">
+                              <img src="<%= cl_image_path chatroom.product.photos.first.key, height: 500, width: 500, crop: :fill, class: "d-block" %>" class="card-img" alt="..." style="border-radius: 14px; object-fit: cover; height:80px; width:80px;">
+                            </div>
+                              <div class="card-body py-2">
+                                  <% if current_user == chatroom.product.user%>
+                                    <div class="d-flex justify-content-between">
+                                      <p class="card-title p-title mb-1 text-muted"><%= User.find(chatroom.user_id).username %></p>
+                                      <p class="px-2"style="background-color:#F38181; color:white; font-size: 13px; border-radius:5px; ">My product</p>
+                                    </div>
+                                  <% else %>
+                                    <p class="card-title p-title mb-1 text-muted"><%= chatroom.product.user.username %></p>
+                                  <% end %>
+                                  <h3 class="card-text p-title mb-1"> <%= chatroom.title %></h3>
+                                  <p class="card-text price-category text-muted"><i class="fas fa-check" style="color:#F38181"></i> <%= chatroom.messages.last.content %></p>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% end %>
+            <hr/>
       <% end %>
     </div>
-
-    <div class="tab-pane fade" id="pills-buying" role="tabpanel" aria-labelledby="pills-buying-tab">
-      <% if @chatrooms_as_buyer.length > 0 %>
-        <div class="list-group">
-          <% @chatrooms_as_buyer.each do |chatroom| %>
-            <%= link_to chatroom.title, chatroom_path(chatroom), class: 'list-group-item list-group-item-action'%>
-          <% end %>
-        </div>
-      <% else %>
-        <div class="container no-products">
-          <p>No chats found</p>
-        </div>
-      <% end %>
+  <% else %>
+    <div class="container no-products">
+      <p>No chats found</p>
     </div>
-
-  </div>
+  <% end %>
 </div>
