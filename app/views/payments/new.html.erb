@@ -1,12 +1,12 @@
 
 <br>
-<div data-controller="product">
+
   <div class="container">
     <div class="mb-3 text-decoration-none">
       <%= link_to "← Back", :back %>
     </div>
     <div class="card mt-2" style='height:200;'>
-      <div class="card" style="border-radius: 15px; height:350px;" >
+      <div class="card" style="border-radius: 15px;" >
         <%= cl_image_tag @order.product.photos.first.key, aspect_ratio: 1.1, quality: 100, crop: :fill, gravity: :center, class: "d-block" %>
       </div>
     </div>
