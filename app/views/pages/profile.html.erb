@@ -44,6 +44,14 @@
           <% end %>
         <% end %>
 
+        <% @user.bought_products.each do |product| %>
+          <% unless product.orders.nil? %>
+            <% product.orders.each do |order| %>
+              <% donated << order.price.to_i %>
+            <% end %>
+          <% end %>
+        <% end %>
+
       <p class="btn-handers-outline">Donated: <%= (donated.sum.to_d / 2) %> €</p>
       </div>
     </div>
