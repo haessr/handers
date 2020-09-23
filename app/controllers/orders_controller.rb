@@ -50,10 +50,10 @@ class OrdersController < ApplicationController
 
 
   def update
+
     @order = Order.find(params[:id])
 
     authorize @order
-
     @order.update(order_params)
 
     redirect_to order_path(@order)

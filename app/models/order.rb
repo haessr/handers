@@ -7,6 +7,7 @@ class Order < ApplicationRecord
   monetize :price_cents
 
   after_create :notify_seller
+  before_save :mark_product_as_sold, if: :will_save_change_to_status?
 
   validate :price_should_be_greater_than_product_min_price
   # before_create :validate_price
@@ -32,4 +33,9 @@ class Order < ApplicationRecord
     self.notify :users, key: "order.received"
   end
 
+  def mark_product_as_sold
+    if self.status == "completed"
+      self.product.update(sold: true)
+    end
+  end
 end

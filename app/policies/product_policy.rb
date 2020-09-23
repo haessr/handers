@@ -40,9 +40,12 @@ class ProductPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
+      # when order is accepted -> the product.sold becomes true
+      # so that we can filter by scope.where.not(sold: true)
+
       # here return products that haven't been purchased
       # instead of returning .all of them
-      scope.all
+      scope.where.not(sold: true)
     end
   end
 end

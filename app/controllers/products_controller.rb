@@ -12,10 +12,7 @@ class ProductsController < ApplicationController
       # @products = Product.all
       @products = policy_scope(Product)
     end
-
   end
-
-
 
   def show
     @order = Order.new
