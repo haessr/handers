@@ -21,7 +21,20 @@ class OrdersController < ApplicationController
     authorize @order
 
     if @order.save
-      redirect_to order_path(@order)
+      session = Stripe::Checkout::Session.create(
+        payment_method_types: ['card'],
+        line_items: [{
+          name: @product.title,
+          amount: @order.price_cents,
+          currency: 'eur',
+          quantity: 1
+        }],
+        success_url: order_url(@order),
+        cancel_url: order_url(@order)
+      )
+      @order.update(checkout_session_id: session.id)
+      redirect_to new_order_payment_path(@order)
+      # redirect_to order_path(@order)
     else
 
       render :template => "products/show"
@@ -37,10 +50,10 @@ class OrdersController < ApplicationController
 
 
   def update
+
     @order = Order.find(params[:id])
 
     authorize @order
-
     @order.update(order_params)
 
     redirect_to order_path(@order)

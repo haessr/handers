@@ -19,11 +19,7 @@
             <% average = 0 %>
           <% end %>
         <% end %>
-        <% if rate.sum == 0 %>
-          <% average = 0 %>
-        <% else %>
-          <% average = rate.sum / rate.count %>
-        <% end %>
+        <% average = rate.count == 0 ? 0 : rate.sum / rate.count %>
         <div><span> <strong>
           <p class="mb-0">
           <% rev = 5 - average %>
@@ -40,10 +36,22 @@
     <div>
       <% donated = [] %>
 
-      <% @user.owned_products.each do |product| %>
-        <% donated << product.order.price.to_i  %>
+        <% @user.owned_products.each do |product| %>
+          <% unless product.orders.nil? %>
+            <% product.orders.each do |order| %>
+              <% donated << order.price.to_i %>
+            <% end %>
+          <% end %>
+        <% end %>
 
-      <% end %>
+        <% @user.bought_products.each do |product| %>
+          <% unless product.orders.nil? %>
+            <% product.orders.each do |order| %>
+              <% donated << order.price.to_i %>
+            <% end %>
+          <% end %>
+        <% end %>
+
       <p class="btn-handers-outline">Donated: <%= (donated.sum.to_d / 2) %> €</p>
       </div>
     </div>
@@ -65,7 +73,7 @@
                 <div class="card-body">
                   <h4 class="mb-2 p-title"> <%= product.title.capitalize %></h4>
                   <div class="d-flex align-items-end">
-                    <h5 class="mb-0 mr-2 price-category"><%= product.min_price %> €</h5><em><p class="text-muted m-0 p-description">Minimum amount</p></em>
+                    <h5 class="mb-0 mr-2 price-category"><%= humanized_money_with_symbol(product.min_price) %></h5><em><p class="text-muted m-0 p-description">Minimum amount</p></em>
                   </div>
                   <p class="text-muted mb-0 p-description mt-2 max-length"> <%= product.description.capitalize %></p>
                 </div>

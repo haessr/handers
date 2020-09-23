@@ -25,7 +25,7 @@
           <br>
           <h2 class="mt-2 mb-3"> <%= @product.title %></h2>
           <div class="d-flex align-content-end">
-            <h3 class="mr-2 mb-0"> <%= @product.min_price %> €</h3><em><p class="text-muted m-0">Minimum amount</p></em>
+            <h3 class="mr-2 mb-0"> <%= humanized_money_with_symbol(@product.min_price) %></h3><em><p class="text-muted m-0">Minimum amount</p></em>
           </div>
           <p class="text-muted mt-2"> <%= @product.description %></p>
         </div>

@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
+  skip_before_action :authenticate_user!, only: [:index]
+
   def index
 
     if params[:query].present?
@@ -11,10 +13,7 @@ class ProductsController < ApplicationController
       # @products = Product.all
       @products = policy_scope(Product)
     end
-
   end
-
-
 
   def show
     @order = Order.new
