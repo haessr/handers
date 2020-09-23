@@ -81,7 +81,7 @@
       </li>
       <li class="list-group-item">
         <strong><span class="prefix">Order total:</span>
-        <span class="label label-success"> <%= @order.price %> € </span></strong>
+        <span class="label label-success"> <%= humanized_money_with_symbol @order.price %> </span></strong>
       </li>
       <li class="list-group-item">
         <span class="prefix">As a "Hander" you are donating half of the total price to: </span>
