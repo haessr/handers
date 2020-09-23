@@ -37,8 +37,18 @@
       <% donated = [] %>
 
         <% @user.owned_products.each do |product| %>
-          <% unless product.order.nil? %>
-            <% donated << product.order.price.to_i %>
+          <% unless product.orders.nil? %>
+            <% product.orders.each do |order| %>
+              <% donated << order.price.to_i %>
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <% @user.bought_products.each do |product| %>
+          <% unless product.orders.nil? %>
+            <% product.orders.each do |order| %>
+              <% donated << order.price.to_i %>
+            <% end %>
           <% end %>
         <% end %>
 
