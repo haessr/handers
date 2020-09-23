@@ -1,4 +1,4 @@
-class ProductPolicy < ApplicationPolicy
+class PaymentPolicy < ApplicationPolicy
   def new?
     true
   end
