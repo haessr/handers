@@ -2,6 +2,8 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
+    @wwf =  Npo.find_by(name: "WWF")
+    @red_cross =  Npo.find_by(name: "Cruz Roja")
   end
 
   def profile
