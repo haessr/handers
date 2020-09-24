@@ -2,9 +2,9 @@
 <div class="container">
   <br>
   <h2>My messages</h2>
-  <% if @chatrooms.length > 0 %>
+  <% if @chatrooms_to_show.length > 0 %>
     <div class="list-group">
-      <% @chatrooms.each do |chatroom| %>
+      <% @chatrooms_to_show.each do |chatroom| %>
           <%= link_to chatroom_path(chatroom), class: 'text-decoration-none color-link-none' do %>
             <div class="row">
                 <div class="col-12 mt-3">
