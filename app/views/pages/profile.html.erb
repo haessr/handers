@@ -3,13 +3,13 @@
   <div class="d-flex align-items-center p-3">
     <% if @user %>
       <%if @user.avatar.attachment.nil? %>
-        <%= image_tag 'https://api.adorable.io/avatars/285/abott@adorable.png', :width => 90, :height => 90, :crop => :fill, class: 'avatar-menubar'%>
+        <img src="<%= cl_image_path 'https://api.adorable.io/avatars/285/abott@adorable.png', height: 500, width: 500, crop: :fill, class: "d-block" %>" class="avatar-menubar" alt="..." style="object-fit: cover; height:90px; width:90px;">
       <% else %>
-        <%= cl_image_tag(@user.avatar.key, :width => 90, :height => 90, :crop => :fill, class: 'avatar-menubar')%>
+        <img src="<%= cl_image_path @user.avatar.key, height: 500, width: 500, crop: :fill, class: "d-block" %>" class="avatar-menubar" alt="..." style="object-fit: cover; height:90px; width:90px;">
       <% end %>
     <% end  %>
     <div class="ml-4 profile__info">
-      <p class="mb-2">@<%= @user.username %></p>
+      <p class="mb-2"><strong><%= @user.username %></strong></p>
       <div>
         <% rate = [] %>
         <% @user.owned_products.each do |product| %>
@@ -20,8 +20,8 @@
           <% end %>
         <% end %>
         <% average = rate.count == 0 ? 0 : rate.sum / rate.count %>
-        <div><span> <strong>
-          <p class="mb-0">
+        <div><span>
+          <p class="mb-1">
           <% rev = 5 - average %>
           <% average.times do  %>
             <i class="fas fa-heart fa-primary"></i>
@@ -29,9 +29,9 @@
           <% rev.times do  %>
             <i class="far fa-heart fa-primary muted"></i>
           <% end %>
-          (<%= average %>/5)
+           (<%= average %>/5)
           </p>
-        </strong> </span></div>
+        </span></div>
     </div>
     <div>
       <% donated = [] %>
@@ -52,7 +52,7 @@
           <% end %>
         <% end %>
 
-      <p class="btn-handers-outline">Donated: <%= (donated.sum.to_d / 2) %> €</p>
+      <p class="btn-handers-outline m-0">Donated: <%= (donated.sum.to_d / 2) %> €</p>
       </div>
     </div>
   </div>
