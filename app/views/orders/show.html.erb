@@ -94,7 +94,7 @@
 
                 <%= simple_form_for(@order) do |f| %>
                   <%= f.input :status, as: :hidden, input_html: {value: "cancelled"} %>
-                  <%= f.button :submit, "Cancel", class: 'btn btn-handers-outline w-100' %>
+                  <%= f.button :submit, "Cancel", class: 'btn btn-handers-outline w-100 mb-3' %>
                 <% end %>
                 <% else %>
                    <p class="fa-primary"> <%= @order.status.capitalize %> </p>
