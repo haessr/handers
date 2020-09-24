@@ -94,7 +94,7 @@
         <div class="modal-body">
             <%= simple_form_for (@order) do |f| %>
               <div><h4>Pick a fair price</h4></div>
-              <%= f.input :price, as: :integer, input_html: { min: @product.min_price } %>
+              <%= f.input :price, as: :integer, placeholder: 'Minimum ' + @product.min_price.to_s + "€" , input_html: { min: @product.min_price } %>
             <!-- <input class="form-control numeric float optional" placeholder="Minimum <%= @product.min_price %> €" type="number" min="<%= @product.min_price %>" step="any" name="order[price]" id="order_price" required> -->
             <%#= f.input :price, as: :float, input_html: { min: 10, value: nil } %>
             <%= f.hidden_field :product_id, value: @product.id %>
