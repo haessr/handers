@@ -11,7 +11,8 @@
     <div class="tab-pane fade show active" id="pills-selling" role="tabpanel" aria-labelledby="pills-selling-tab">
       <% if @seller_orders.length > 0 %>
         <% @seller_orders.each do |order| %>
-            <div class="col-12 my-4">
+            <div class="col-12 my-4 p-0">
+              <%= link_to order_path(order), class: "text-decoration-none color-link-none" do %>
                 <div class="card d-flex" style="border-radius: 15px;">
                   <img class="card-img-top" src="<%= cl_image_path order.product.photos.first.key, height: 600, width: 1000, crop: :fill %>" alt="Card image cap" style="border-top-right-radius: 15px; border-top-left-radius: 15px;">
                   <div class="card-body">
@@ -30,6 +31,7 @@
                     <a class="btn px-4 cancelled mx-4 mb-3 mt-1" href="/orders/<%= order.id %>" role="button"><%= order.status.capitalize %> </a>
                   <% end %>
                 </div>
+              <% end %>
             </div>
         <% end %>
       <% else %>
@@ -42,7 +44,8 @@
     <div class="tab-pane fade" id="pills-buying" role="tabpanel" aria-labelledby="pills-buying-tab">
       <% if @buyer_orders.length > 0 %>
         <% @buyer_orders.each do |order| %>
-            <div class="col-12 my-4">
+            <div class="col-12 my-4 p-0">
+              <%= link_to order_path(order), class: "text-decoration-none color-link-none" do %>
                 <div class="card d-flex" style="border-radius: 15px;">
                   <img class="card-img-top" src="<%= cl_image_path order.product.photos.first.key, height: 600, width: 1000, crop: :fill %>" alt="Card image cap" style="border-top-right-radius: 15px; border-top-left-radius: 15px;">
                   <div class="card-body">
@@ -62,6 +65,7 @@
 
                   <% end %>
                 </div>
+              <% end %>
             </div>
         <% end %>
       <% else %>
