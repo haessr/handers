@@ -54,9 +54,31 @@
   <div class="container home-intro section-bg py-4">
     <div class="col-12 col-lg-4 text-center caption-custom my-4">
       <h1>Are you a charity?</h1>
-      <p class="mb-5">Connect with people who care about your cause! Reach more people and raise more money with Handers</p>
+      <p class="mb-5">Connect with people who care about your cause! Reach more people and raise more money with Handers
+      Any charity organization can register in Handers and have their profile validated by our team.</p>
 
       <a href="/npos/new" class="btn secondary-btn"> <strong>Register your NPO</strong> </a>
     </div>
   </div>
 </section>
+
+<section class="my-4">
+  <div class="container">
+    <div class="row py-2">
+      <div class="col">
+       <h4 class="text-center pt-2 px-2 primary-color">Meet our collaborators</h4>
+       <div class="d-flex justify-content-around m-5">
+         <%= cl_image_tag @wwf.photo.key, width: "50", height: "50", class: "card-img-top w-auto" %>
+         <%= cl_image_tag @red_cross.photo.key, width: "50",  height: "50", class: "card-img-top w-auto" %>
+       </div>
+       <div class="row justify-content-center">
+        <a href="/npos/" class="btn btn-handers margin-auto"> <strong>View All Partners</strong> </a>
+      </div>
+     </div>
+    </div>
+  </div>
+</section>
+
+
+
+
