@@ -23,7 +23,9 @@
                                     <p class="card-title p-title mb-1 text-muted"><%= chatroom.product.user.username %></p>
                                   <% end %>
                                   <h3 class="card-text p-title mb-1"> <%= chatroom.title %></h3>
-                                  <p class="card-text price-category text-muted"><i class="fas fa-check" style="color:#F38181"></i> <%= chatroom.messages.last.content %></p>
+                                  <% if chatroom.messages.length > 0 %>
+                                    <p class="card-text price-category text-muted"><i class="fas fa-check" style="color:#F38181"></i> <%= chatroom.messages.last.content %></p>
+                                  <% end %>
                               </div>
                         </div>
                     </div>
