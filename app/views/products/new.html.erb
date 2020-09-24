@@ -36,7 +36,6 @@
     <%#= f.association :npos,
                 label: 'Which NPO will you be donating to?'%>
 
-
     <%= f.input :photos,
                 as: :file,
                 input_html: {multiple: true,  class: 'inputfile-products inputfile-products__photos', data: { action: 'change->upload#previewImage' }},

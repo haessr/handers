@@ -1,16 +1,18 @@
 class Product < ApplicationRecord
   geocoded_by :location
-  after_validation :geocode, if: :will_save_change_to_location?
+  monetize :min_price_cents
 
   belongs_to :user
-  has_many :orders
-  has_one :review
   belongs_to :npo
 
+  has_many :chatrooms
+  has_many :orders
+  has_many_attached :photos
+
+  has_one :review
 
   validates :description, :title, :min_price_cents, :location, presence: true
+  validates :photos, presence: true
 
-  has_many_attached :photos
-  has_many :chatrooms
-  monetize :min_price_cents
+  after_validation :geocode, if: :will_save_change_to_location?
 end
