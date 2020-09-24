@@ -76,7 +76,7 @@
     <ul class="list-group">
       <li class="list-group-item">
         <span class="prefix">Order date:</span>
-        <span class="label label-success"> <%= @order.created_at %> </span>
+        <span class="label label-success"> <%= @order.created_at.strftime("%d/%m/%Y at %I:%M%p") %> </span>
       </li>
       <li class="list-group-item">
         <div class="d-flex justify-content-between align-items-center">
