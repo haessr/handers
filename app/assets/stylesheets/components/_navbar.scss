@@ -68,3 +68,11 @@
   display: flex;
   align-items: center;
 }
+
+.fake-btn {
+  height: 70px;
+  position: absolute;
+  width: 140px;
+  top: 0;
+  z-index: 2000;
+}
