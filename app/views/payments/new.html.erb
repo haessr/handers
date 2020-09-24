@@ -1,32 +1,31 @@
 
 <br>
   <div class="container">
-    <div class="mb-3 text-decoration-none">
-      <%= link_to "← Back", :back %>
-    </div>
-    <div class="card mt-2" style="height:200;">
-      <div class="card" style="border-radius: 15px;" >
-        <%= cl_image_tag @order.product.photos.first.key, aspect_ratio: 1.1, quality: 100, crop: :fill, gravity: :center, class: "d-block" %>
+    <h2>Checkout summary</h2>
+    <div id="carouselExampleIndicators" class="carousel slide mt-2" data-ride="carousel" style='height:200;'>
+      <div class="carousel-inner" style="border-radius: 15px; height:300px;" >
+        <% @order.product.photos.each_with_index do |flat, index| %>
+        <div class="carousel-item <%= 'active' if index != 0 %>">
+          <img class="d-block w-100" src="<%= cl_image_path flat.key, aspect_ratio: 1.1, quality: 200, crop: :fill, gravity: :center, class: "d-block" %>" alt="First slide">
+        </div>
+        <% end %>
       </div>
     </div>
-    <div class="container mb-4">
-      <br>
-      <h1>Checkout summary</h1>
-      <p>Purchase of <strong><%= @order.product.title %></strong> for <strong><%= humanized_money_with_symbol @order.price %></strong></p>
-      <button id="pay" class="btn btn-handers">Pay</button>
-      <!-- # Commented for the lecture, remove comments.-->
-      <script src="https://js.stripe.com/v3/"></script>
-      <script>
-        const paymentButton = document.getElementById('pay');
-        paymentButton.addEventListener('click', () => {
-          const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
-          stripe.redirectToCheckout({
-            sessionId: '<%= @order.checkout_session_id %>'
-          });
+    <br>
+    <p>Purchase of <strong><%= @order.product.title %></strong> for <strong><%= humanized_money_with_symbol @order.price %></strong></p>
+    <button id="pay" class="btn btn-handers mb-3">Pay</button>
+    <!-- # Commented for the lecture, remove comments.-->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+      const paymentButton = document.getElementById('pay');
+      paymentButton.addEventListener('click', () => {
+        const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+        stripe.redirectToCheckout({
+          sessionId: '<%= @order.checkout_session_id %>'
         });
-      </script>
-        <br>
-    </div>
+      });
+    </script>
+    <br>
   </div>
 
 
