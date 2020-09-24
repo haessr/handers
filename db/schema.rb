@@ -112,8 +112,8 @@ ActiveRecord::Schema.define(version: 2020_09_23_130717) do
     t.float "latitude"
     t.float "longitude"
     t.bigint "npo_id"
-    t.integer "min_price_cents", default: 0, null: false
     t.boolean "sold", default: false
+    t.integer "min_price_cents", default: 0, null: false
     t.index ["npo_id"], name: "index_products_on_npo_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end

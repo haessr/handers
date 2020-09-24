@@ -7,11 +7,11 @@ class ProductsController < ApplicationController
 
     if params[:query].present?
       sql_query = "title ILIKE :query OR description ILIKE :query"
-      @products = policy_scope(Product).where(sql_query, query: "%#{params[:query]}%")
+      @products = policy_scope(Product).where(sql_query, query: "%#{params[:query]}%").order(created_at: :desc)
       # @products = Product.where(sql_query, query: "%#{params[:query]}%")
     else
       # @products = Product.all
-      @products = policy_scope(Product)
+      @products = policy_scope(Product).order(created_at: :desc)
     end
   end
 
