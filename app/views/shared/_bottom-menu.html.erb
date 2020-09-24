@@ -28,7 +28,7 @@
         </li>
 
         <li class="nav-item-custom li-plus">
-          <a href="/products/new" class="nav-link nav-link-custom">
+          <a href="/products/new" class="nav-link nav-link-custom add-new">
            <!-- <i class="fas fa-plus fa-secondary"></i> -->
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill bottom-menu-icon plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
@@ -53,9 +53,9 @@
           <div class="bottom-menu-icon-container">
             <% if current_user %>
               <%if current_user.avatar.attachment.nil? %>
-                <%= image_tag 'https://api.adorable.io/avatars/285/abott@adorable.png', :width => 36, :height => 36, :crop => :fill, class: 'avatar-menubar bottom-menu-icon'%>
+                <img src="<%= cl_image_path 'https://api.adorable.io/avatars/285/abott@adorable.png', height: 500, width: 500, crop: :fill, class: "d-block" %>" class="avatar-menubar bottom-menu-icon" alt="..." style="object-fit: cover; height:36px; width:36px;">
               <% else %>
-                <%= cl_image_tag(current_user.avatar.key, :width => 36, :height => 36, :crop => :fill, class: 'avatar-menubar bottom-menu-icon')%>
+                <img src="<%= cl_image_path current_user.avatar.key, height: 500, width: 500, crop: :fill, class: "d-block" %>" class="avatar-menubar bottom-menu-icon" alt="..." style="object-fit: cover; height:36px; width:36px;">
               <% end %>
             <% else %>
               <!-- <i class="far fa-user fa-primary"></i> -->
