@@ -9,6 +9,14 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @product = @order.product
+    if current_user
+      if Chatroom.where(user_id: @order.user.id, product_id: @order.product.id).first.nil?
+        @chatroom_id = nil
+      else
+        @chatroom_id = Chatroom.where(user_id: @order.user.id, product_id: @order.product.id).first.id
+      end
+    end
     authorize @order
   end
 
