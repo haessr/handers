@@ -1,12 +1,12 @@
 
-<div class="container">
+<div class="container" data-controller="image">
   <div class="row justify-content-center">
     <div>
       <% @products.each do |product| %>
           <div class="col-12 my-4">
             <%= link_to product_path(product), class: "text-decoration-none color-link-none" do %>
               <div class="card d-flex" style="border-radius: 15px;">
-                <img class="card-img-top" src="<%= cl_image_path product.photos.first.key, height: 300, width: 500, crop: :fill %>" alt="Card image cap" style="border-top-right-radius: 14px; border-top-left-radius: 14px;">
+                <%= cl_image_tag product.photos.first.key, height: 300, width: 500, class: 'card-img-top', style: 'border-top-right-radius: 14px; border-top-left-radius: 14px; object-fit: cover;' %>
                 <div class="card-body">
                   <h4 class="mb-2 p-title"> <%= product.title.capitalize %></h4>
                   <div class="d-flex align-items-end">
